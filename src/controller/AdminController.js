@@ -1,14 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/user");
-router.get("/users",async (req, res) => {
-    const user = req.headers;
-    
-    const espe=JSON.stringify(user); 
-    const mau = espe.substring(18,196);
-    const userfinal = await UserModel.findOne({token:mau});
+const { getId } = require("./TokensController");
 
-    return res.json({userfinal});
+router.get("/users", async (req, res) => {
+    const k = req.headers.authorization;
+    const id = getId(k);
+    if(id == undefined){
+        return res.json("User not found");
+    }
+    return res.json(await findId(id.id));
 });
+
+async function findId(id){
+    return await UserModel.findOne({"_id":id}).then((e)=>{
+        return e;
+    });                           
+                                                             
+}
 
 module.exports = router;

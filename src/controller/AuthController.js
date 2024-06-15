@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/user");
 const authConfig = require("../config/auth.json");
+const { criarToken } = require("./TokensController");
 
 const router = express.Router();
 
@@ -30,11 +31,9 @@ router.post("/register", async(req,res)=>{
     const token = jwt.sign({
         id: user.id,
         name: user.name
-    },authConfig.secret,{
-        expiresIn: 604800 
-    });
+    },authConfig.secret,{});
 
-    return res.json({user,token});
+    return res.json({ message:'Registrado'});
 });
 
 router.post("/authenticate", async(req,res)=>{
@@ -55,7 +54,7 @@ router.post("/authenticate", async(req,res)=>{
     }
 
     user.senha = undefined;
-    console.log(user);
+    
 
     const token = jwt.sign({
         id: user.id,
@@ -63,8 +62,9 @@ router.post("/authenticate", async(req,res)=>{
     },authConfig.secret,{
         expiresIn: 604800 
     });
+    criarToken(token,user.id);
 
-    return res.json({user,token});
+    return res.json({message:'Logado', token});
 });
 
 module.exports = router;
