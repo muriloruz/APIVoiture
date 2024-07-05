@@ -1,4 +1,5 @@
-﻿using APIVoiture.Models;
+﻿using APIVoiture.Data;
+using APIVoiture.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIVoiture.Controllers;
@@ -7,13 +8,18 @@ namespace APIVoiture.Controllers;
 [Route("[controller]")]
 public class UsuarioController : ControllerBase
 {
-    private static List<Usuario> users = new List<Usuario>();
-    private static int id = 0;
+    private UsuarioContext _context;
+
+    public UsuarioController(UsuarioContext context)
+    {
+        _context = context;
+    }
+
     [HttpPost]
     public IActionResult AdicionaUsuario([FromBody] Usuario user)
     {
-        user.Id = id++;
-        users.Add(user);
+        _context.usuarios.Add(user);
+        _context.SaveChanges();
         return CreatedAtAction(nameof(GetSingleUser), new {id = user.Id},
         user);
             
@@ -21,7 +27,7 @@ public class UsuarioController : ControllerBase
     [HttpGet("single/{id}")]
     public IActionResult GetSingleUser(int id)
     {
-        var u = users.FirstOrDefault(user => user.Id == id);
+        var u = _context.usuarios.FirstOrDefault(user => user.Id == id);
         if(u== null)
             return NotFound();
         return Ok(u);
@@ -29,11 +35,11 @@ public class UsuarioController : ControllerBase
     [HttpGet("mult")]
     public IEnumerable<Usuario> GetUsuarioEmMultiplo([FromQuery]int skip=0,[FromQuery] int take = 10)
     {
-        return users.Skip(skip).Take(take).ToList();
+        return _context.usuarios.Skip(skip).Take(take).ToList();
     }
     [HttpGet("all")]
     public IEnumerable<Usuario> GetAllUsers()
     {
-        return users;
+        return _context.usuarios;
     }
 }

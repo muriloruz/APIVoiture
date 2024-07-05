@@ -6,6 +6,8 @@ namespace APIVoiture.Models;
 
 public class Usuario
 {
+    [Key]
+    [Required]
     public int Id { get; set; }
     [Required(ErrorMessage ="O campo nome eh obrigatorio")]
     [StringLength(70, ErrorMessage ="Nome muito grande")]
@@ -18,6 +20,7 @@ public class Usuario
     public string CEP {  get; set; }
     [MinLength(11,ErrorMessage ="Menor que 11")]
     [MaxLength(11,ErrorMessage ="Maior que 11")]
+    [Required(ErrorMessage ="Cpf esta ausente")]
     public string CPF { get; set; }
     public string sexo { get; set; }
     [Required(ErrorMessage ="o campo email eh obrigatorio")]

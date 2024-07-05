@@ -1,5 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using APIVoiture.Data;
+using Microsoft.EntityFrameworkCore;
 
+var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("UsuarioConnection");
+
+builder.Services.AddDbContext<UsuarioContext>(opts =>
+    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+    );
 // Add services to the container.
 
 builder.Services.AddControllers();

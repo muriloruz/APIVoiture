@@ -31,3 +31,12 @@ C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\obj\Debug\net6.0\refin
 C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\obj\Debug\net6.0\APIVoiture.pdb
 C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\obj\Debug\net6.0\APIVoiture.genruntimeconfig.cache
 C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\obj\Debug\net6.0\ref\APIVoiture.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Humanizer.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\MySqlConnector.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
