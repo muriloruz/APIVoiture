@@ -18,8 +18,8 @@ public class Usuario
     [MinLength(8,ErrorMessage ="CEP menor que tamanho minimo")]
     [MaxLength(8,ErrorMessage ="CEP maior que tamanho maximo")]
     public string CEP {  get; set; }
-    [MinLength(11,ErrorMessage ="Menor que 11")]
-    [MaxLength(11,ErrorMessage ="Maior que 11")]
+    [MinLength(11,ErrorMessage ="Cpf Menor que 11")]
+    [MaxLength(11,ErrorMessage ="Cpf Maior que 11")]
     [Required(ErrorMessage ="Cpf esta ausente")]
     public string CPF { get; set; }
     public string sexo { get; set; }
