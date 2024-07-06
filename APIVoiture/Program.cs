@@ -9,6 +9,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<UsuarioContext>(opts =>
     opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
     );
+
 // Add services to the container.
 
 builder.Services.AddControllers().AddNewtonsoftJson();
@@ -26,6 +27,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+    await next();
+});
 
 app.UseAuthorization();
 
