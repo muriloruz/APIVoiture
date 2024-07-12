@@ -4,6 +4,7 @@ using APIVoiture.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using BCrypt.Net;
 
 namespace APIVoiture.Controllers;
 
@@ -24,11 +25,32 @@ public class UsuarioController : ControllerBase
     public IActionResult AdicionaUsuario([FromBody] CreateUsuarioDto userDTO)
     {
         Usuario user = _mapper.Map<Usuario>(userDTO);
+        var hashedSenha = BCrypt.Net.BCrypt.HashPassword(user.senha);
+        user.senha = hashedSenha;
         _context.usuarios.Add(user);
         _context.SaveChanges();
         return CreatedAtAction(nameof(GetSingleUser), new {id = user.Id},
         user);
             
+    }
+
+    [HttpPost("login")]
+    public IActionResult AuthUsuario([FromBody] AuthUsuarioDto authDto)
+    {
+        if (authDto == null || string.IsNullOrWhiteSpace(authDto.Email) || string.IsNullOrWhiteSpace(authDto.Senha))
+        {
+            return BadRequest("Dados inválidos.");
+        }
+
+        var usuario = _context.usuarios.FirstOrDefault(user => user.email == authDto.Email);
+        if (usuario == null || !BCrypt.Net.BCrypt.Verify(authDto.Senha, usuario.senha))
+        {
+            return Unauthorized("E-mail ou senha incorretos.");
+        }
+
+        // Geração do token JWT pode ser feita aqui
+
+        return Ok("Autenticado");
     }
 
     [HttpGet("single/{id}")]

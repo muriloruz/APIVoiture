@@ -46,3 +46,4 @@ C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Micro
 C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\muril\Desktop\github\apiC#\APIVoiture\APIVoiture\bin\Debug\net6.0\BCrypt.Net-Next.dll
