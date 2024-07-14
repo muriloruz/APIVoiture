@@ -11,7 +11,9 @@ namespace APIVoiture.Profiles
             CreateMap<CreateUsuarioDto, Usuario>();
             CreateMap<UpdateUsuarioDto, Usuario>();
             CreateMap<Usuario, UpdateUsuarioDto>();
-            CreateMap<Usuario, ReadUsuarioDto>();
+            CreateMap<Endereco, ReadEnderecoDto>();
+            CreateMap<Usuario, ReadUsuarioDto>().ForMember(dto => dto.endereco,
+                opt => opt.MapFrom(u => new[] { u.Endereco }));
         }
     }
 }

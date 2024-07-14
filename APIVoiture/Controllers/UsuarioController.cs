@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using BCrypt.Net;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIVoiture.Controllers;
 
@@ -12,6 +13,7 @@ namespace APIVoiture.Controllers;
 [Route("[controller]")]
 public class UsuarioController : ControllerBase
 {
+    
     private UsuarioContext _context;
     private IMapper _mapper;
 
@@ -19,6 +21,7 @@ public class UsuarioController : ControllerBase
     {
         _context = context;
         _mapper = mapper;
+
     }
 
     [HttpPost]
@@ -69,9 +72,11 @@ public class UsuarioController : ControllerBase
         return _mapper.Map<List<ReadUsuarioDto>>(_context.usuarios.Skip(skip).Take(take).ToList());
     }
     [HttpGet("all")]
-    public IEnumerable<ReadUsuarioDto> GetAllUsers()
+    public async Task<ActionResult<IEnumerable<ReadUsuarioDto>>> GetAllUsers()
     {
-        return _mapper.Map<List<ReadUsuarioDto>>(_context.usuarios);
+        var usuarios = _context.usuarios.ToList();
+        var readUsuarios = _mapper.Map<List<ReadUsuarioDto>>(usuarios);
+        return Ok(readUsuarios);
     }
 
     [HttpPut("{id}")]

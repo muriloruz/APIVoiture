@@ -27,5 +27,12 @@ public class Usuario
     public string email { get; set; }
     [Required(ErrorMessage = "o campo senha eh obrigatorio")]
     public string senha { get; set; }
+
     
+    public virtual ICollection<Vendedor> Vendedores { get; set; }
+
+    [Required]
+    public int EnderecoId { get; set; }
+    public virtual Endereco Endereco { get; set; }
+
 }
