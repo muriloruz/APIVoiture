@@ -14,6 +14,9 @@ public class UsuarioContext : DbContext
     public DbSet<Endereco> Enderecos { get; set; }
     public DbSet<Vendedor> Vendedor { get; set; }
     public DbSet<ModeloCarro> ModeloCarros { get; set; }
+    public DbSet<VendedorCliente> VendedorClientes { get; set; }
+    public DbSet<Pagamento> Pagamento { get; set; }
+    public DbSet<Peca> Pecas { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Usuario>()
@@ -28,6 +31,18 @@ public class UsuarioContext : DbContext
         modelBuilder.Entity<Endereco>()
                 .HasIndex(u => u.CEP)
                 .IsUnique();
+        modelBuilder.Entity<VendedorCliente>()
+            .HasKey(vc => new { vc.VendedorId, vc.UsuarioId });
+
+        modelBuilder.Entity<VendedorCliente>()
+            .HasOne(vc => vc.Vendedor)
+            .WithMany(v => v.VendedorCliente)
+            .HasForeignKey(vc => vc.VendedorId);
+
+        modelBuilder.Entity<VendedorCliente>()
+            .HasOne(vc => vc.Usuario)
+            .WithMany(c => c.VendedorCliente)
+            .HasForeignKey(vc => vc.UsuarioId);
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

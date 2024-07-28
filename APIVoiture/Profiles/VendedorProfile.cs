@@ -2,6 +2,7 @@
 using APIVoiture.Models;
 using AutoMapper;
 
+
 namespace APIVoiture.Profiles
 {
     public class VendedorProfile : Profile

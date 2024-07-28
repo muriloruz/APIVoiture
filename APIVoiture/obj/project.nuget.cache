@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/ogJLZgJ3+E=",
+  "dgSpecHash": "/sDXAe+4rW4=",
   "success": true,
   "projectFilePath": "C:\\Users\\muril\\Desktop\\github\\apiC#\\APIVoiture\\APIVoiture\\APIVoiture.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\muril\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\muril\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\muril\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",

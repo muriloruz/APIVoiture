@@ -32,5 +32,7 @@ public class CreateUsuarioDto
     [Required(ErrorMessage = "O campo Senha é obrigatório.")]
     [MinLength(6, ErrorMessage = "A Senha deve ter pelo menos 6 caracteres.")]
     public string Senha { get; set; }
+
+    public int PecaId {  get; set; }
     public int EnderecoId { get; set; }
 }

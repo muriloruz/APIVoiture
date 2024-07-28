@@ -7,16 +7,14 @@ using APIVoiture.Models;
 
 namespace APIVoiture.Controllers;
 
-public class MCController
+[ApiController]
+[Route("[controller]")]
+public class MCController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class MCCOntroller : ControllerBase
-    {
         private UsuarioContext _context;
         private IMapper _mapper;
 
-        public MCCOntroller(UsuarioContext context, IMapper mapper)
+        public MCController(UsuarioContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -50,4 +48,3 @@ public class MCController
             return NotFound();
         }
     }
-}

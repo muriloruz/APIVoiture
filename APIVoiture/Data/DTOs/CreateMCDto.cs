@@ -7,6 +7,9 @@ namespace APIVoiture.Data.DTOs
         [Required(ErrorMessage = "modelo is required")]
         [StringLength(100, ErrorMessage = "max of modelo is 100 chars")]
         public string modelo { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string marca { get; set; }
         [Required(ErrorMessage = "ano is required")]
         public int ano { get; set; }
         [StringLength(10, ErrorMessage = "max of valvulas is 10 chars")]

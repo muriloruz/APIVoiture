@@ -28,15 +28,17 @@ public class Vendedor
     [MinLength(14,ErrorMessage = "max and minimal chars of cnpj is 14")]
     [MaxLength(14, ErrorMessage = "max and minimal chars of cnpj is 14")]
     public string cnpj { get; set; }
-  
-    
+    [Required]
+    public string email { get; set; }
     public string telefoneVend { get; set; }
     public double avaliacao { get; set; }
     public int numDeAvaliacao { get; set; }
+    public string senha { get; set; }
 
+    public virtual ICollection<Peca> Pecas { get; set; }
+
+    public virtual ICollection<VendedorCliente> VendedorCliente { get; set; } //n:n
     
-    public virtual ICollection<Usuario> Usuarios { get; set; } //n:n
-
     [Required]
     public int EnderecoId { set; get; } //1 : 1
     public virtual Endereco Endereco { get; set; }

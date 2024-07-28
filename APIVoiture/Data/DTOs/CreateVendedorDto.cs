@@ -15,5 +15,10 @@ public class CreateVendedorDto
     public string telefoneVend { get; set; }
     public double avaliacao { get; set; }
     public int numDeAvaliacao { get; set; }
+    [Required]
+    [EmailAddress]
+    public string email { get; set; }
+    [Required]
+    public string senha { get; set; }
     public int EnderecoId { get; set; }
 }

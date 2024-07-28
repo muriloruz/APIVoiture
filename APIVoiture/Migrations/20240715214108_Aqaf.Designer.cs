@@ -3,6 +3,7 @@ using System;
 using APIVoiture.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIVoiture.Migrations
 {
     [DbContext(typeof(UsuarioContext))]
-    partial class UsuarioContextModelSnapshot : ModelSnapshot
+    [Migration("20240715214108_Aqaf")]
+    partial class Aqaf
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,6 +131,9 @@ namespace APIVoiture.Migrations
                     b.Property<DateTime>("DataHora")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("MetodoPagamento")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -155,6 +160,8 @@ namespace APIVoiture.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EnderecoId");
+
                     b.HasIndex("PecaId");
 
                     b.HasIndex("UsuarioId");
@@ -166,6 +173,9 @@ namespace APIVoiture.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("MCId")
                         .HasColumnType("int");
 
                     b.Property<int>("ModeloCarroid")
@@ -338,6 +348,12 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.Pagamento", b =>
                 {
+                    b.HasOne("APIVoiture.Models.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("APIVoiture.Models.Peca", "Peca")
                         .WithMany("Pagamento")
                         .HasForeignKey("PecaId")
@@ -351,6 +367,8 @@ namespace APIVoiture.Migrations
                         .IsRequired();
 
                     b.Navigation("Cliente");
+
+                    b.Navigation("Endereco");
 
                     b.Navigation("Peca");
                 });
