@@ -1,13 +1,17 @@
+using APIVoiture.Authorization;
 using APIVoiture.Controllers;
 using APIVoiture.Data;
 using APIVoiture.Models;
 using APIVoiture.Profiles;
+using APIVoiture.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 using static APIVoiture.Controllers.MCController;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("UsuarioConnection");
+var connectionString = builder.Configuration["ConnectionStrings:UsuarioConnection"];
 
 // Configurar AutoMapper
 var mapperConfig = new MapperConfiguration(mc =>
@@ -38,10 +42,24 @@ builder.Services.AddDbContext<UsuarioContext>(opts =>
     opts.UseLazyLoadingProxies()
         .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+builder.Services.AddIdentity<Usuario, IdentityRole<int>>()
+    .AddEntityFrameworkStores<UsuarioContext>()
+    .AddDefaultTokenProviders();
+
 builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<UsuarioServices>();
+builder.Services.AddScoped<TokenService>();
+
+builder.Services.AddAuthorization(opt =>
+{
+    opt.AddPolicy("IdadeMinima", policy => policy.AddRequirements(new IdadeMinima(18)));
+});
+
+/*builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());*/
 
 builder.Services.AddCors(options =>
 {

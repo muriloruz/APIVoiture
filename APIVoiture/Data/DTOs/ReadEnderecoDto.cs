@@ -13,7 +13,7 @@ namespace APIVoiture.Data.DTOs
  
         public string cidade { get; set; }
  
-        public long numero { get; set; }
+        
         public string complemento { get; set; }
         public string unidade { get; set; }
         

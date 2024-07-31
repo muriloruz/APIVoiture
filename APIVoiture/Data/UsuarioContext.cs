@@ -1,9 +1,12 @@
 ﻿using APIVoiture.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIVoiture.Data;
 
-public class UsuarioContext : DbContext
+public class UsuarioContext : IdentityDbContext<Usuario, IdentityRole<int>, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>,
+    IdentityRoleClaim<int>, IdentityUserToken<int>>
 {
     public UsuarioContext(DbContextOptions<UsuarioContext> opts)
         : base(opts)
@@ -19,9 +22,51 @@ public class UsuarioContext : DbContext
     public DbSet<Peca> Pecas { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Usuario>()
-            .HasIndex(u => u.email)
-            .IsUnique();
+
+        modelBuilder.Entity<Usuario>(b =>
+        {
+            b.HasKey(u => u.Id);
+            b.ToTable("AspNetUsers");
+        });
+
+        modelBuilder.Entity<IdentityRole<int>>(b =>
+        {
+            b.HasKey(r => r.Id);
+            b.ToTable("AspNetRoles");
+        });
+
+        modelBuilder.Entity<IdentityUserRole<int>>(b =>
+        {
+            b.HasKey(r => new { r.UserId, r.RoleId });
+            b.ToTable("AspNetUserRoles");
+        });
+
+        modelBuilder.Entity<IdentityUserClaim<int>>(b =>
+        {
+            b.HasKey(c => c.Id);
+            b.ToTable("AspNetUserClaims");
+        });
+
+        modelBuilder.Entity<IdentityUserLogin<int>>(b =>
+        {
+            b.HasKey(l => new { l.LoginProvider, l.ProviderKey });
+            b.ToTable("AspNetUserLogins");
+        });
+
+        modelBuilder.Entity<IdentityRoleClaim<int>>(b =>
+        {
+            b.HasKey(rc => rc.Id);
+            b.ToTable("AspNetRoleClaims");
+        });
+
+        modelBuilder.Entity<IdentityUserToken<int>>(b =>
+        {
+            b.HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
+            b.ToTable("AspNetUserTokens");
+        });
+
+
+
         modelBuilder.Entity<Usuario>()
             .HasIndex(u => u.CPF)
             .IsUnique();
@@ -31,6 +76,7 @@ public class UsuarioContext : DbContext
         modelBuilder.Entity<Endereco>()
                 .HasIndex(u => u.CEP)
                 .IsUnique();
+        
         modelBuilder.Entity<VendedorCliente>()
             .HasKey(vc => new { vc.VendedorId, vc.UsuarioId });
 

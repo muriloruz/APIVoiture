@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using APIVoiture.Services;
 
 namespace APIVoiture.Controllers;
 
@@ -16,45 +18,31 @@ public class UsuarioController : ControllerBase
     
     private UsuarioContext _context;
     private IMapper _mapper;
+    private UserManager<Usuario> _userManager;
+    private UsuarioServices _usuarioService;
 
-    public UsuarioController(UsuarioContext context, IMapper mapper)
+    public UsuarioController(UsuarioContext context, IMapper mapper, UserManager<Usuario> userManager, UsuarioServices cadastroService)
     {
         _context = context;
         _mapper = mapper;
-
+        _userManager = userManager;
+        _usuarioService = cadastroService;
     }
 
     [HttpPost]
-    public IActionResult AdicionaUsuario([FromBody] CreateUsuarioDto userDTO)
+    public async Task<IActionResult> AdicionaUsuario(CreateUsuarioDto userDTO)
     {
-        Usuario user = _mapper.Map<Usuario>(userDTO);
-        var hashedSenha = BCrypt.Net.BCrypt.HashPassword(user.senha);
-        user.senha = hashedSenha;
-        _context.usuarios.Add(user);
-        _context.SaveChanges();
-        return CreatedAtAction(nameof(GetSingleUser), new {id = user.Id},
-        user);
+        await _usuarioService.Cadastra(userDTO);
+        return Ok("Cadastrado!");
             
     }
-
     [HttpPost("login")]
-    public IActionResult AuthUsuario([FromBody] AuthUsuarioDto authDto)
+    public async Task<IActionResult> Login(AuthUsuarioDto dto)
     {
-        if (authDto == null || string.IsNullOrWhiteSpace(authDto.Email) || string.IsNullOrWhiteSpace(authDto.Senha))
-        {
-            return BadRequest("Dados inválidos.");
-        }
-
-        var usuario = _context.usuarios.FirstOrDefault(user => user.email == authDto.Email);
-        if (usuario == null || !BCrypt.Net.BCrypt.Verify(authDto.Senha, usuario.senha))
-        {
-            return Unauthorized("E-mail ou senha incorretos.");
-        }
-
-        // Geração do token JWT pode ser feita aqui
-
-        return Ok("Autenticado");
+        var token = await _usuarioService.Login(dto);
+        return Ok(token);
     }
+
 
     [HttpGet("single/{id}")]
     public IActionResult GetSingleUser(int id)

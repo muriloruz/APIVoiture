@@ -17,8 +17,6 @@ public class CreateEnderecoDto
     [Required(ErrorMessage = "cidade required")]
     [StringLength(40, ErrorMessage = "max size of cidade is 40")]
     public string cidade { get; set; }
-    [Required(ErrorMessage = "numero required")]
-    public long numero { get; set; }
     [StringLength(70, ErrorMessage = "max size of rua is 70")]
     public string complemento { get; set; }
     [StringLength(30, ErrorMessage = "max size of unidade is 30")]

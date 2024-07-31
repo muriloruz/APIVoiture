@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("9d0121d7-e3d1-4b5d-9a75-5bff25ec1367")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIVoiture")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d45faa5e52028d46702216b0b0e0b33d2120a0f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87cfe37c8b9c4fb4b4cc14f30ffaaa0f0de1d238")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIVoiture")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIVoiture")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
