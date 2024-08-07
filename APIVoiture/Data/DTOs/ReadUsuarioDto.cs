@@ -28,6 +28,10 @@ namespace APIVoiture.Data.DTOs
         
         public string Senha { get; set; }
 
+        public long numeroResid { get; set; }
+
+        public ICollection<ReadEnderecoDto> endereco { get; set; }
+
         public DateTime HoraDaConsulta { get; set; } = DateTime.Now;
     }
 }
