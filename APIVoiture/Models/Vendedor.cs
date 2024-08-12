@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace APIVoiture.Models;
 
-public class Vendedor
+public class Vendedor : IdentityUser
 {
     /*
       Add-Migration "Vendedor e Endereco"
@@ -16,24 +17,17 @@ public class Vendedor
 	--Endereco.id : int
 
      */
-    [Key]
-    [Required]
-    public int id { get; set; }
+   
 
-    [Required(ErrorMessage ="nome is required")]
-    [StringLength(70,ErrorMessage ="max chars of name is 70")]
-    public string nomeVendedor { get; set; }
 
     [Required(ErrorMessage = "cnpj is required")]
     [MinLength(14,ErrorMessage = "max and minimal chars of cnpj is 14")]
     [MaxLength(14, ErrorMessage = "max and minimal chars of cnpj is 14")]
     public string cnpj { get; set; }
     [Required]
-    public string email { get; set; }
     public string telefoneVend { get; set; }
     public double avaliacao { get; set; }
     public int numDeAvaliacao { get; set; }
-    public string senha { get; set; }
 
     public virtual ICollection<Peca> Pecas { get; set; }
 
@@ -42,4 +36,9 @@ public class Vendedor
     [Required]
     public int EnderecoId { set; get; } //1 : 1
     public virtual Endereco Endereco { get; set; }
+
+    public Vendedor() : base()
+    {
+
+    }
 }

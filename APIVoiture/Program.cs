@@ -42,7 +42,7 @@ builder.Services.AddDbContext<UsuarioContext>(opts =>
     opts.UseLazyLoadingProxies()
         .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-builder.Services.AddIdentity<Usuario, IdentityRole<int>>()
+builder.Services.AddIdentity<Usuario, IdentityRole>()
     .AddEntityFrameworkStores<UsuarioContext>()
     .AddDefaultTokenProviders();
 

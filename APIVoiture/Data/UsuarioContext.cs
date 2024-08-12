@@ -5,8 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APIVoiture.Data;
 
-public class UsuarioContext : IdentityDbContext<Usuario, IdentityRole<int>, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>,
-    IdentityRoleClaim<int>, IdentityUserToken<int>>
+public class UsuarioContext : IdentityDbContext<Usuario>
 {
     public UsuarioContext(DbContextOptions<UsuarioContext> opts)
         : base(opts)
@@ -22,51 +21,20 @@ public class UsuarioContext : IdentityDbContext<Usuario, IdentityRole<int>, int,
     public DbSet<Peca> Pecas { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
-        modelBuilder.Entity<Usuario>(b =>
+        modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
         {
-            b.HasKey(u => u.Id);
-            b.ToTable("AspNetUsers");
+            entity.HasKey(l => new { l.LoginProvider, l.ProviderKey });
         });
 
-        modelBuilder.Entity<IdentityRole<int>>(b =>
+        modelBuilder.Entity<IdentityUserRole<string>>(entity =>
         {
-            b.HasKey(r => r.Id);
-            b.ToTable("AspNetRoles");
+            entity.HasKey(r => new { r.UserId, r.RoleId });
         });
 
-        modelBuilder.Entity<IdentityUserRole<int>>(b =>
+        modelBuilder.Entity<IdentityUserToken<string>>(entity =>
         {
-            b.HasKey(r => new { r.UserId, r.RoleId });
-            b.ToTable("AspNetUserRoles");
+            entity.HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
         });
-
-        modelBuilder.Entity<IdentityUserClaim<int>>(b =>
-        {
-            b.HasKey(c => c.Id);
-            b.ToTable("AspNetUserClaims");
-        });
-
-        modelBuilder.Entity<IdentityUserLogin<int>>(b =>
-        {
-            b.HasKey(l => new { l.LoginProvider, l.ProviderKey });
-            b.ToTable("AspNetUserLogins");
-        });
-
-        modelBuilder.Entity<IdentityRoleClaim<int>>(b =>
-        {
-            b.HasKey(rc => rc.Id);
-            b.ToTable("AspNetRoleClaims");
-        });
-
-        modelBuilder.Entity<IdentityUserToken<int>>(b =>
-        {
-            b.HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
-            b.ToTable("AspNetUserTokens");
-        });
-
-
-
         modelBuilder.Entity<Usuario>()
             .HasIndex(u => u.CPF)
             .IsUnique();

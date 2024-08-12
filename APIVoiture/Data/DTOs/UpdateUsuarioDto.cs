@@ -6,7 +6,7 @@ public class UpdateUsuarioDto
 {
     [Required(ErrorMessage = "O campo Nome é obrigatório.")]
     [StringLength(70, ErrorMessage = "O Nome não pode ter mais de 70 caracteres.")]
-    public string Nome { get; set; }
+    public string UserName { get; set; }
 
     [Range(18, 120, ErrorMessage = "A Idade deve estar entre 18 e 120 anos.")]
     public int Idade { get; set; }
@@ -31,7 +31,7 @@ public class UpdateUsuarioDto
 
     [Required(ErrorMessage = "O campo Senha é obrigatório.")]
     [MinLength(6, ErrorMessage = "A Senha deve ter pelo menos 6 caracteres.")]
-    public string Senha { get; set; }
+    public string Password { get; set; }
     [Required]
     public long numeroResid { get; set; }
 }

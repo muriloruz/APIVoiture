@@ -51,11 +51,11 @@ public class Peca
 
 
     [Required]
-    public int VendedorId { get; set; }
+    public string VendedorId { get; set; }
     public virtual Vendedor Vendedor { get; set; }
 
 
-    public int? UsuarioId { get; set; }
+    public string? UsuarioId { get; set; }
     public virtual Usuario Usuario { get; set; }
 
     public virtual ICollection<Pagamento> Pagamento { get; set; }

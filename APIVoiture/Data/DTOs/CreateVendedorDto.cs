@@ -6,7 +6,7 @@ public class CreateVendedorDto
 {
     [Required(ErrorMessage = "nome is required")]
     [StringLength(70, ErrorMessage = "max chars of name is 70")]
-    public string nomeVendedor { get; set; }
+    public string UserName { get; set; }
     [Required(ErrorMessage = "cnpj is required")]
     [MinLength(14, ErrorMessage = "max and minimal chars of cnpj is 14")]
     [MaxLength(14, ErrorMessage = "max and minimal chars of cnpj is 14")]
@@ -17,8 +17,9 @@ public class CreateVendedorDto
     public int numDeAvaliacao { get; set; }
     [Required]
     [EmailAddress]
-    public string email { get; set; }
+    public string Email { get; set; }
     [Required]
-    public string senha { get; set; }
+    public string Password { get; set; }
+    public string RePassword { get; set; }
     public int EnderecoId { get; set; }
 }

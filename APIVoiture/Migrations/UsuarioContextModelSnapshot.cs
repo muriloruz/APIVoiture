@@ -123,6 +123,9 @@ namespace APIVoiture.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("ClienteId")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<DateTime>("DataHora")
                         .HasColumnType("datetime(6)");
 
@@ -152,9 +155,9 @@ namespace APIVoiture.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PecaId");
+                    b.HasIndex("ClienteId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("PecaId");
 
                     b.ToTable("Pagamento");
                 });
@@ -168,11 +171,12 @@ namespace APIVoiture.Migrations
                     b.Property<int>("ModeloCarroid")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
+                    b.Property<string>("UsuarioId")
+                        .HasColumnType("varchar(255)");
 
-                    b.Property<int>("VendedorId")
-                        .HasColumnType("int");
+                    b.Property<string>("VendedorId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("descricao")
                         .IsRequired()
@@ -216,9 +220,8 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.Usuario", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -296,17 +299,58 @@ namespace APIVoiture.Migrations
 
                     b.HasIndex("EnderecoId");
 
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("Usuario");
                 });
 
             modelBuilder.Entity("APIVoiture.Models.Vendedor", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("longtext");
 
                     b.Property<double>("avaliacao")
                         .HasColumnType("double");
@@ -316,27 +360,14 @@ namespace APIVoiture.Migrations
                         .HasMaxLength(14)
                         .HasColumnType("varchar(14)");
 
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("nomeVendedor")
-                        .IsRequired()
-                        .HasMaxLength(70)
-                        .HasColumnType("varchar(70)");
-
                     b.Property<int>("numDeAvaliacao")
                         .HasColumnType("int");
-
-                    b.Property<string>("senha")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("telefoneVend")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("EnderecoId")
                         .IsUnique();
@@ -349,11 +380,11 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.VendedorCliente", b =>
                 {
-                    b.Property<int?>("VendedorId")
-                        .HasColumnType("int");
+                    b.Property<string>("VendedorId")
+                        .HasColumnType("varchar(255)");
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
+                    b.Property<string>("UsuarioId")
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("VendedorId", "UsuarioId");
 
@@ -362,11 +393,10 @@ namespace APIVoiture.Migrations
                     b.ToTable("VendedorClientes");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("longtext");
@@ -379,10 +409,10 @@ namespace APIVoiture.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AspNetRoles", (string)null);
+                    b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -394,15 +424,15 @@ namespace APIVoiture.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<string>("RoleId")
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AspNetRoleClaims", (string)null);
+                    b.ToTable("RoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -414,15 +444,15 @@ namespace APIVoiture.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AspNetUserClaims", (string)null);
+                    b.ToTable("UserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("varchar(255)");
@@ -433,31 +463,31 @@ namespace APIVoiture.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("longtext");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
-                    b.ToTable("AspNetUserLogins", (string)null);
+                    b.ToTable("UserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<string>("RoleId")
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.ToTable("AspNetUserRoles", (string)null);
+                    b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("varchar(255)");
@@ -470,20 +500,18 @@ namespace APIVoiture.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", (string)null);
+                    b.ToTable("UserTokens");
                 });
 
             modelBuilder.Entity("APIVoiture.Models.Pagamento", b =>
                 {
+                    b.HasOne("APIVoiture.Models.Usuario", "Cliente")
+                        .WithMany("Pagamentos")
+                        .HasForeignKey("ClienteId");
+
                     b.HasOne("APIVoiture.Models.Peca", "Peca")
                         .WithMany("Pagamento")
                         .HasForeignKey("PecaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("APIVoiture.Models.Usuario", "Cliente")
-                        .WithMany("Pagamentos")
-                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

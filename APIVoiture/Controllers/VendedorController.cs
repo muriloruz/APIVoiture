@@ -26,7 +26,7 @@ namespace APIVoiture.Controllers
             Vendedor vendedor = _mapper.Map<Vendedor>(vendedorDto);
             _context.Vendedor.Add(vendedor);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(RecuperaVendedorPorId), new { Id = vendedor.id }, vendedor);
+            return CreatedAtAction(nameof(RecuperaVendedorPorId), new { Id = vendedor.Id }, vendedor);
         }
 
         [HttpGet]
@@ -38,9 +38,9 @@ namespace APIVoiture.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult RecuperaVendedorPorId(int id)
+        public IActionResult RecuperaVendedorPorId(string id)
         {
-            Vendedor vendedor = _context.Vendedor.FirstOrDefault(vendedor => vendedor.id == id);
+            Vendedor vendedor = _context.Vendedor.FirstOrDefault(vendedor => vendedor.Id == id);
             if (vendedor != null)
             {
                 ReadVendedorDto vendedorDto = _mapper.Map<ReadVendedorDto>(vendedor);
@@ -51,9 +51,9 @@ namespace APIVoiture.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizaVendedor(int id, [FromBody] UpdateVendedorDto vendedorDto)
+        public IActionResult AtualizaVendedor(string id, [FromBody] UpdateVendedorDto vendedorDto)
         {
-            Vendedor vendedor = _context.Vendedor.FirstOrDefault(vendedor => vendedor.id == id);
+            Vendedor vendedor = _context.Vendedor.FirstOrDefault(vendedor => vendedor.Id == id);
             if (vendedor == null)
             {
                 return NotFound();
@@ -65,9 +65,9 @@ namespace APIVoiture.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult DeletaVendedor(int id)
+        public IActionResult DeletaVendedor(string id)
         {
-            Vendedor vendedor = _context.Vendedor.FirstOrDefault(vendedor => vendedor.id == id);
+            Vendedor vendedor = _context.Vendedor.FirstOrDefault(vendedor => vendedor.Id == id);
             if (vendedor == null)
             {
                 return NotFound();

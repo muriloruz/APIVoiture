@@ -9,6 +9,6 @@
         public string MetodoPagamento { get; set; }
         public double PrecoPeca { get; set; }
         public int PecaId { get; set; }
-        public int ClienteId { get; set; }
+        public string UsuarioId { get; set; }
     }
 }

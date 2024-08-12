@@ -27,7 +27,7 @@ namespace APIVoiture.Controllers
                 return _mapper.Map<List<VendedorClienteDTO>>(_context.VendedorClientes.ToList());
             }
             [HttpGet("{usuarioId}/{vendedorId}")]
-            public IActionResult GetById(int usuarioId, int vendedorId)
+            public IActionResult GetById(string usuarioId, string vendedorId)
             {
                 VendedorCliente vc = _context.VendedorClientes.FirstOrDefault(vc => vc.UsuarioId == usuarioId && vc.VendedorId == vendedorId);
                 if (vc != null)

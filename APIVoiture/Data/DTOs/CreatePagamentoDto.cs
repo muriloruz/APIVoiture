@@ -22,7 +22,7 @@ namespace APIVoiture.Data.DTOs
         [Required]
         public int PecaId { get; set; }
         [Required]
-        public int ClienteId { get; set; }
+        public string UsuarioId { get; set; }
     }
 }
 

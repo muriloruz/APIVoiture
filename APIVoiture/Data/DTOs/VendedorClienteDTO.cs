@@ -2,7 +2,7 @@
 {
     public class VendedorClienteDTO
     {
-        public int VendedorId { get; set; }
-        public int UsuarioId { get; set; }
+        public string VendedorId { get; set; }
+        public string UsuarioId { get; set; }
     }
 }

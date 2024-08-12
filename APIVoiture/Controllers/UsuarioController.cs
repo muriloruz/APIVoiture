@@ -45,7 +45,7 @@ public class UsuarioController : ControllerBase
 
 
     [HttpGet("single/{id}")]
-    public IActionResult GetSingleUser(int id)
+    public IActionResult GetSingleUser(string id)
     {
         var u = _context.usuarios.FirstOrDefault(user => user.Id == id);
         if(u== null)
@@ -68,7 +68,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult updateUsuario(int id, [FromBody] UpdateUsuarioDto userDto)
+    public IActionResult updateUsuario(string id, [FromBody] UpdateUsuarioDto userDto)
     {
         var user = _context.usuarios.FirstOrDefault(user =>user.Id == id);
         if(user == null) return NotFound();
@@ -78,7 +78,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public IActionResult updateUsuarioPatch(int id, JsonPatchDocument<UpdateUsuarioDto> patch)
+    public IActionResult updateUsuarioPatch(string id, JsonPatchDocument<UpdateUsuarioDto> patch)
     {
         var user = _context.usuarios.FirstOrDefault(user => user.Id == id);
         if (user == null) return NotFound();
@@ -97,7 +97,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult deleteUsuario(int id) {
+    public IActionResult deleteUsuario(string id) {
         var user = _context.usuarios.FirstOrDefault(user => user.Id == id);
         if (user == null) return NotFound();
         _context.Remove(user);

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APIVoiture.Models;
 
-public class Usuario : IdentityUser<int>
+public class Usuario : IdentityUser
 {
     [Range(18,120,ErrorMessage = "O usuario nao pode ter mais de 120 nem menos de 18")]
     [Required]
