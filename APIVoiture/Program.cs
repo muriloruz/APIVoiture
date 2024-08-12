@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using static APIVoiture.Controllers.MCController;
 
 var builder = WebApplication.CreateBuilder(args);
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
 builder.WebHost.UseUrls($"http://*:{port}");
 
 builder.Services.AddHealthChecks();
@@ -92,7 +92,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHealthChecks("/health");
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 // Usar CORS
 app.UseCors("AllowSpecificOrigin");
