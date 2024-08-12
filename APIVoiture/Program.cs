@@ -11,6 +11,11 @@ using Microsoft.EntityFrameworkCore;
 using static APIVoiture.Controllers.MCController;
 
 var builder = WebApplication.CreateBuilder(args);
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
+
+builder.Services.AddHealthChecks();
+
 var connectionString = builder.Configuration["ConnectionStrings:UsuarioConnection"];
 
 // Configurar AutoMapper
@@ -85,6 +90,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHealthChecks("/health");
+
 app.UseHttpsRedirection();
 
 // Usar CORS
@@ -99,5 +106,7 @@ app.Use(async (context, next) =>
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();

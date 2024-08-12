@@ -7,6 +7,6 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>APIVoiture</ActiveDebugProfile>
+    <ActiveDebugProfile>Container (Dockerfile)</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

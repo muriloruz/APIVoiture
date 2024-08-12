@@ -1,0 +1,8 @@
+[build]
+builder = "dockfile"
+dockerfilePath = "./APIVoiture/Dockerfile"
+
+[delpoy]
+startCommand = "dotnet APIVoiture.dll"
+restartPolicyType = "always"
+healthcheckPath = "/health"
