@@ -7,6 +7,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>Container (Dockerfile)</ActiveDebugProfile>
+    <ActiveDebugProfile>APIVoiture</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\Murilo\Desktop\github\APIVoiture\APIVoiture\Properties\PublishProfiles\FolderProfile1.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

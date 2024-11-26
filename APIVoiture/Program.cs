@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 using static APIVoiture.Controllers.MCController;
 
 var builder = WebApplication.CreateBuilder(args);
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
-builder.WebHost.UseUrls($"http://*:{port}");
+//var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
+//builder.WebHost.UseUrls($"http://*:{port}");
 
 
-var connectionString = builder.Configuration["ConnectionStrings:UsuarioConnection"];
+var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
 
 // Configurar AutoMapper
 var mapperConfig = new MapperConfiguration(mc =>

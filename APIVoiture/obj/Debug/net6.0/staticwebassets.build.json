@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "fuFGy3rXFeFeVj2gvx90qCXuRPKZ4y14rYSpK2HuGvQ=",
+  "Hash": "08gkswXPVoGdJTC6uo9NRNWbnNEDuK+FEbEzZvh459k=",
   "Source": "APIVoiture",
   "BasePath": "_content/APIVoiture",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

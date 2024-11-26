@@ -26,8 +26,8 @@ namespace APIVoiture.Services
                 new Claim("telefone", usuario.telefone),
                 new Claim("idade", usuario.idade.ToString()),
             };
-
-            var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SymmetricSecurityKey"]));
+            
+            var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("fjosahfjklashfojsafklgjsaljgnaslghaljhbfljAGDFQRERYTUUOINCNBBMFAGFQIKUFGQAKFKLAQHFKAGFKAGKFJAGKFGVAFKAGFKAGFOQIFOQGFOQGFQ"));
 
             var signingCredentials = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
 

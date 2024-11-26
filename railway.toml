@@ -1,7 +1,0 @@
-[build]
-builder = "dockerfile"
-dockerfilePath = "./APIVoiture/Dockerfile"
-
-[delpoy]
-startCommand = "dotnet APIVoiture.dll"
-restartPolicyType = "never"

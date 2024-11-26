@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\APIVoiture.csproj": {}
+    "C:\\Users\\murilo\\Desktop\\APIVoiture\\APIVoiture.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\APIVoiture.csproj": {
+    "C:\\Users\\murilo\\Desktop\\APIVoiture\\APIVoiture.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\APIVoiture.csproj",
+        "projectUniqueName": "C:\\Users\\murilo\\Desktop\\APIVoiture\\APIVoiture.csproj",
         "projectName": "APIVoiture",
-        "projectPath": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\APIVoiture.csproj",
-        "packagesPath": "C:\\Users\\Murilo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\obj\\",
+        "projectPath": "C:\\Users\\murilo\\Desktop\\APIVoiture\\APIVoiture.csproj",
+        "packagesPath": "C:\\Users\\murilo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\murilo\\Desktop\\APIVoiture\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Murilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\murilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,8 +42,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -114,15 +119,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-              "version": "[6.0.32, 6.0.32]"
+              "version": "[6.0.36, 6.0.36]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[6.0.32, 6.0.32]"
+              "version": "[6.0.36, 6.0.36]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-              "version": "[6.0.32, 6.0.32]"
+              "version": "[6.0.36, 6.0.36]"
             }
           ],
           "frameworkReferences": {
@@ -133,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.424\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
