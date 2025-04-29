@@ -18,10 +18,10 @@ public class UsuarioController : ControllerBase
     
     private UsuarioContext _context;
     private IMapper _mapper;
-    private UserManager<Usuario> _userManager;
+    private UserManager<ApplicationUser> _userManager;
     private UsuarioServices _usuarioService;
 
-    public UsuarioController(UsuarioContext context, IMapper mapper, UserManager<Usuario> userManager, UsuarioServices cadastroService)
+    public UsuarioController(UsuarioContext context, IMapper mapper, UserManager<ApplicationUser> userManager, UsuarioServices cadastroService)
     {
         _context = context;
         _mapper = mapper;
@@ -78,7 +78,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public IActionResult updateUsuarioPatch(string id, JsonPatchDocument<UpdateUsuarioDto> patch)
+    public IActionResult updateUsuarioPatch(string id,[FromBody] JsonPatchDocument<UpdateUsuarioDto> patch)
     {
         var user = _context.usuarios.FirstOrDefault(user => user.Id == id);
         if (user == null) return NotFound();

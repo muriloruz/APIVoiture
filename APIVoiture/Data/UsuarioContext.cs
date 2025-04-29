@@ -5,7 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APIVoiture.Data;
 
-public class UsuarioContext : IdentityDbContext<Usuario>
+
+public class ApplicationUser : IdentityUser
+{
+    public string nome { get; set; }
+}
+
+
+public class UsuarioContext : IdentityDbContext<ApplicationUser>
 {
     public UsuarioContext(DbContextOptions<UsuarioContext> opts)
         : base(opts)
@@ -25,6 +32,13 @@ public class UsuarioContext : IdentityDbContext<Usuario>
         {
             entity.HasKey(l => new { l.LoginProvider, l.ProviderKey });
         });
+        modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUsers");
+
+        modelBuilder.Entity<Usuario>()
+        .ToTable("Usuarios");
+
+        modelBuilder.Entity<Vendedor>()
+       .ToTable("Vendedores");
 
         modelBuilder.Entity<IdentityUserRole<string>>(entity =>
         {

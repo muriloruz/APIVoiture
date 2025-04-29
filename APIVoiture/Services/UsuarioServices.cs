@@ -1,4 +1,5 @@
-﻿using APIVoiture.Data.DTOs;
+﻿using APIVoiture.Data;
+using APIVoiture.Data.DTOs;
 using APIVoiture.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
@@ -8,11 +9,11 @@ namespace APIVoiture.Services;
 public class UsuarioServices
 {
     private IMapper _mapper;
-    private UserManager<Usuario> _userManager;
-    private SignInManager<Usuario> _signInManager;
-    private TokenService _tokenService;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly TokenService _tokenService;
 
-    public UsuarioServices(IMapper mapper, UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, TokenService tokenService)
+    public UsuarioServices(IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, TokenService tokenService)
     {
         _mapper = mapper;
         _userManager = userManager;
@@ -27,17 +28,19 @@ public class UsuarioServices
     public async Task Cadastra(CreateUsuarioDto userDTO)
     {
         Usuario usuario = _mapper.Map<Usuario>(userDTO);
-        var re = await _userManager.CreateAsync(usuario, userDTO.Password);
+        
+            var re = await _userManager.CreateAsync(usuario, userDTO.Password);
+            await _userManager.AddToRoleAsync(usuario, "USUARIO");
         if (!re.Succeeded)
         {
             throw new ApplicationException("Falha ao cadastrar!");
         }
-       
+ 
     }
 
     public async Task<string> Login(AuthUsuarioDto dto)
     {
-        Usuario user = await _userManager.FindByEmailAsync(dto.Email);
+        ApplicationUser user = await _userManager.FindByEmailAsync(dto.Email);
         if (user != null)
         {
             var re = await _signInManager.PasswordSignInAsync(user.UserName, dto.Password, false, false);

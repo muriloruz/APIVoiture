@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIVoiture.Migrations
 {
     [DbContext(typeof(UsuarioContext))]
-    [Migration("20240810232521_Vendedor identity")]
-    partial class Vendedoridentity
+    [Migration("20250428215114_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,62 @@ namespace APIVoiture.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("APIVoiture.Data.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApplicationUsers", (string)null);
+                });
 
             modelBuilder.Entity("APIVoiture.Models.Endereco", b =>
                 {
@@ -126,6 +182,7 @@ namespace APIVoiture.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClienteId")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("DataHora")
@@ -218,166 +275,6 @@ namespace APIVoiture.Migrations
                     b.HasIndex("VendedorId");
 
                     b.ToTable("Pecas");
-                });
-
-            modelBuilder.Entity("APIVoiture.Models.Usuario", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CEP")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("varchar(8)");
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("varchar(11)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("idade")
-                        .HasColumnType("int");
-
-                    b.Property<string>("nome")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<long>("numeroResid")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("telefone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CPF")
-                        .IsUnique();
-
-                    b.HasIndex("EnderecoId");
-
-                    b.ToTable("Usuario");
-                });
-
-            modelBuilder.Entity("APIVoiture.Models.Vendedor", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext");
-
-                    b.Property<double>("avaliacao")
-                        .HasColumnType("double");
-
-                    b.Property<string>("cnpj")
-                        .IsRequired()
-                        .HasMaxLength(14)
-                        .HasColumnType("varchar(14)");
-
-                    b.Property<int>("numDeAvaliacao")
-                        .HasColumnType("int");
-
-                    b.Property<string>("telefoneVend")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EnderecoId")
-                        .IsUnique();
-
-                    b.HasIndex("cnpj")
-                        .IsUnique();
-
-                    b.ToTable("Vendedor");
                 });
 
             modelBuilder.Entity("APIVoiture.Models.VendedorCliente", b =>
@@ -505,11 +402,75 @@ namespace APIVoiture.Migrations
                     b.ToTable("UserTokens");
                 });
 
+            modelBuilder.Entity("APIVoiture.Models.Usuario", b =>
+                {
+                    b.HasBaseType("APIVoiture.Data.ApplicationUser");
+
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<int?>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("numeroResid")
+                        .HasColumnType("bigint");
+
+                    b.HasIndex("CPF")
+                        .IsUnique();
+
+                    b.HasIndex("EnderecoId");
+
+                    b.ToTable("Usuarios", (string)null);
+                });
+
+            modelBuilder.Entity("APIVoiture.Models.Vendedor", b =>
+                {
+                    b.HasBaseType("APIVoiture.Data.ApplicationUser");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RePassword")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("avaliacao")
+                        .HasColumnType("double");
+
+                    b.Property<string>("cnpj")
+                        .IsRequired()
+                        .HasMaxLength(14)
+                        .HasColumnType("varchar(14)");
+
+                    b.Property<int>("numDeAvaliacao")
+                        .HasColumnType("int");
+
+                    b.Property<string>("telefoneVend")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasIndex("EnderecoId")
+                        .IsUnique();
+
+                    b.HasIndex("cnpj")
+                        .IsUnique();
+
+                    b.ToTable("Vendedores", (string)null);
+                });
+
             modelBuilder.Entity("APIVoiture.Models.Pagamento", b =>
                 {
                     b.HasOne("APIVoiture.Models.Usuario", "Cliente")
                         .WithMany("Pagamentos")
-                        .HasForeignKey("ClienteId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("APIVoiture.Models.Peca", "Peca")
                         .WithMany("Pagamento")
@@ -547,28 +508,6 @@ namespace APIVoiture.Migrations
                     b.Navigation("Vendedor");
                 });
 
-            modelBuilder.Entity("APIVoiture.Models.Usuario", b =>
-                {
-                    b.HasOne("APIVoiture.Models.Endereco", "Endereco")
-                        .WithMany("Usuario")
-                        .HasForeignKey("EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Endereco");
-                });
-
-            modelBuilder.Entity("APIVoiture.Models.Vendedor", b =>
-                {
-                    b.HasOne("APIVoiture.Models.Endereco", "Endereco")
-                        .WithOne("Vendedor")
-                        .HasForeignKey("APIVoiture.Models.Vendedor", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Endereco");
-                });
-
             modelBuilder.Entity("APIVoiture.Models.VendedorCliente", b =>
                 {
                     b.HasOne("APIVoiture.Models.Usuario", "Usuario")
@@ -586,6 +525,38 @@ namespace APIVoiture.Migrations
                     b.Navigation("Usuario");
 
                     b.Navigation("Vendedor");
+                });
+
+            modelBuilder.Entity("APIVoiture.Models.Usuario", b =>
+                {
+                    b.HasOne("APIVoiture.Models.Endereco", "Endereco")
+                        .WithMany("Usuario")
+                        .HasForeignKey("EnderecoId");
+
+                    b.HasOne("APIVoiture.Data.ApplicationUser", null)
+                        .WithOne()
+                        .HasForeignKey("APIVoiture.Models.Usuario", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Endereco");
+                });
+
+            modelBuilder.Entity("APIVoiture.Models.Vendedor", b =>
+                {
+                    b.HasOne("APIVoiture.Models.Endereco", "Endereco")
+                        .WithOne("Vendedor")
+                        .HasForeignKey("APIVoiture.Models.Vendedor", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("APIVoiture.Data.ApplicationUser", null)
+                        .WithOne()
+                        .HasForeignKey("APIVoiture.Models.Vendedor", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Endereco");
                 });
 
             modelBuilder.Entity("APIVoiture.Models.Endereco", b =>

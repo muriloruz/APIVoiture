@@ -6,11 +6,48 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APIVoiture.Migrations
 {
-    public partial class Vendedoridentity : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ApplicationUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    nome = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UserName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NormalizedUserName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NormalizedEmail = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EmailConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    PasswordHash = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    SecurityStamp = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApplicationUsers", x => x.Id);
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -179,59 +216,35 @@ namespace APIVoiture.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Usuario",
+                name: "Usuarios",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    nome = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    idade = table.Column<int>(type: "int", nullable: false),
-                    telefone = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CEP = table.Column<string>(type: "varchar(8)", maxLength: 8, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CPF = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     numeroResid = table.Column<long>(type: "bigint", nullable: false),
-                    EnderecoId = table.Column<int>(type: "int", nullable: false),
-                    UserName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    NormalizedUserName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    NormalizedEmail = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmailConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    SecurityStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PhoneNumber = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    EnderecoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuario", x => x.Id);
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Usuario_Enderecos_EnderecoId",
+                        name: "FK_Usuarios_ApplicationUsers_Id",
+                        column: x => x.Id,
+                        principalTable: "ApplicationUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Enderecos_EnderecoId",
                         column: x => x.EnderecoId,
                         principalTable: "Enderecos",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Vendedor",
+                name: "Vendedores",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -242,35 +255,23 @@ namespace APIVoiture.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     avaliacao = table.Column<double>(type: "double", nullable: false),
                     numDeAvaliacao = table.Column<int>(type: "int", nullable: false),
-                    EnderecoId = table.Column<int>(type: "int", nullable: false),
-                    UserName = table.Column<string>(type: "longtext", nullable: true)
+                    Password = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NormalizedUserName = table.Column<string>(type: "longtext", nullable: true)
+                    RePassword = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    NormalizedEmail = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmailConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    SecurityStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PhoneNumber = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    EnderecoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vendedor", x => x.Id);
+                    table.PrimaryKey("PK_Vendedores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vendedor_Enderecos_EnderecoId",
+                        name: "FK_Vendedores_ApplicationUsers_Id",
+                        column: x => x.Id,
+                        principalTable: "ApplicationUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Vendedores_Enderecos_EnderecoId",
                         column: x => x.EnderecoId,
                         principalTable: "Enderecos",
                         principalColumn: "id",
@@ -311,14 +312,14 @@ namespace APIVoiture.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pecas_Usuario_UsuarioId",
+                        name: "FK_Pecas_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
-                        principalTable: "Usuario",
+                        principalTable: "Usuarios",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Pecas_Vendedor_VendedorId",
+                        name: "FK_Pecas_Vendedores_VendedorId",
                         column: x => x.VendedorId,
-                        principalTable: "Vendedor",
+                        principalTable: "Vendedores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -337,15 +338,15 @@ namespace APIVoiture.Migrations
                 {
                     table.PrimaryKey("PK_VendedorClientes", x => new { x.VendedorId, x.UsuarioId });
                     table.ForeignKey(
-                        name: "FK_VendedorClientes_Usuario_UsuarioId",
+                        name: "FK_VendedorClientes_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
-                        principalTable: "Usuario",
+                        principalTable: "Usuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_VendedorClientes_Vendedor_VendedorId",
+                        name: "FK_VendedorClientes_Vendedores_VendedorId",
                         column: x => x.VendedorId,
-                        principalTable: "Vendedor",
+                        principalTable: "Vendedores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -367,7 +368,7 @@ namespace APIVoiture.Migrations
                     PrecoPeca = table.Column<double>(type: "double", nullable: false),
                     PecaId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    ClienteId = table.Column<string>(type: "varchar(255)", nullable: true)
+                    ClienteId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -380,10 +381,11 @@ namespace APIVoiture.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pagamento_Usuario_ClienteId",
+                        name: "FK_Pagamento_Usuarios_ClienteId",
                         column: x => x.ClienteId,
-                        principalTable: "Usuario",
-                        principalColumn: "Id");
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -419,32 +421,32 @@ namespace APIVoiture.Migrations
                 column: "VendedorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_CPF",
-                table: "Usuario",
+                name: "IX_Usuarios_CPF",
+                table: "Usuarios",
                 column: "CPF",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_EnderecoId",
-                table: "Usuario",
+                name: "IX_Usuarios_EnderecoId",
+                table: "Usuarios",
                 column: "EnderecoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Vendedor_cnpj",
-                table: "Vendedor",
-                column: "cnpj",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Vendedor_EnderecoId",
-                table: "Vendedor",
-                column: "EnderecoId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_VendedorClientes_UsuarioId",
                 table: "VendedorClientes",
                 column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vendedores_cnpj",
+                table: "Vendedores",
+                column: "cnpj",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vendedores_EnderecoId",
+                table: "Vendedores",
+                column: "EnderecoId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -480,10 +482,13 @@ namespace APIVoiture.Migrations
                 name: "ModeloCarros");
 
             migrationBuilder.DropTable(
-                name: "Usuario");
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
-                name: "Vendedor");
+                name: "Vendedores");
+
+            migrationBuilder.DropTable(
+                name: "ApplicationUsers");
 
             migrationBuilder.DropTable(
                 name: "Enderecos");

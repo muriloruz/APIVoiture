@@ -2,6 +2,7 @@
 using APIVoiture.Data.DTOs;
 using APIVoiture.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,7 @@ public class PecaController : ControllerBase
         _mapper = mapper;
     }
     [HttpPost]
+    [Authorize(Policy = "VendedorPolicy")]
     public ActionResult<ReadPecaDto> CreatePagamento([FromBody] CreatePecaDto pecaCreateDto)
     {
         var peca = _mapper.Map<Peca>(pecaCreateDto);
@@ -44,6 +46,7 @@ public class PecaController : ControllerBase
         return Ok(_mapper.Map<ReadPecaDto>(p));
     }
     [HttpPatch("/{id}")]
+    [Authorize(Policy = "VendedorPolicy")]
     public IActionResult updatePecaPatch(int id, JsonPatchDocument<UpdatePecaDto> patch)
     {
         var peca = _context.Pecas.FirstOrDefault(peca => peca.Id == id);
@@ -62,6 +65,7 @@ public class PecaController : ControllerBase
         return NoContent();
     }
     [HttpDelete("/{id}")]
+    [Authorize(Policy = "VendedorPolicy")]
     public ActionResult DeletePeca(int id) { 
         var p = _context.Pecas.FirstOrDefault(peca => peca.Id == id);
         if(p==null) return NotFound();

@@ -686,5 +686,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorController",
+    "Method": "Login",
+    "RelativePath": "Vendedor/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIVoiture.Data.DTOs.AuthVendedor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

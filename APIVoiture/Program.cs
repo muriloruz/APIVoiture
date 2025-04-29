@@ -5,6 +5,7 @@ using APIVoiture.Models;
 using APIVoiture.Profiles;
 using APIVoiture.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ using static APIVoiture.Controllers.MCController;
 var builder = WebApplication.CreateBuilder(args);
 //var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
 //builder.WebHost.UseUrls($"http://*:{port}");
+
 
 
 var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
@@ -30,13 +32,7 @@ var mapperConfig = new MapperConfiguration(mc =>
     // Adicione outras profiles conforme necessário
 });
 builder.Services.AddControllers();
-builder.Services.AddTransient<VendedorClienteController>();
-builder.Services.AddTransient<EnderecoController>();
-builder.Services.AddTransient<MCController>();
-builder.Services.AddTransient<UsuarioController>();
-builder.Services.AddTransient<VendedorController>();
-builder.Services.AddTransient<PagamentoController>();
-builder.Services.AddTransient<PecaController>();
+
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
@@ -46,7 +42,7 @@ builder.Services.AddDbContext<UsuarioContext>(opts =>
     opts.UseLazyLoadingProxies()
         .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-builder.Services.AddIdentity<Usuario, IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<UsuarioContext>()
     .AddDefaultTokenProviders();
 
@@ -57,10 +53,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UsuarioServices>();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<VendedorServices>();
 
 builder.Services.AddAuthorization(opt =>
 {
-    opt.AddPolicy("IdadeMinima", policy => policy.AddRequirements(new IdadeMinima(18)));
+    opt.AddPolicy("VendedorPolicy", policy => policy.RequireRole("VENDEDOR"));
+    opt.AddPolicy("UsuarioPolicy", policy => policy.RequireRole("USUARIO"));
+
 });
 
 /*builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());*/
@@ -80,7 +79,24 @@ builder.Services.AddCors(options =>
         });
 });
 
+
+
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string[] roles = new[] { "USUARIO", "VENDEDOR", "ADMIN" };
+    foreach (var roleName in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(roleName))
+        {
+            await roleManager.CreateAsync(new IdentityRole(roleName));
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -101,6 +117,12 @@ app.Use(async (context, next) =>
     context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
     await next();
 });
+
+
+
+
+
+
 
 app.UseAuthorization();
 

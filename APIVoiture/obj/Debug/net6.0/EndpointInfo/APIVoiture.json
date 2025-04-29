@@ -1059,6 +1059,42 @@
         }
       }
     },
+    "/Vendedor/login": {
+      "post": {
+        "tags": [
+          "Vendedor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthVendedor"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthVendedor"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthVendedor"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthVendedor"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Vendedor/{id}": {
       "get": {
         "tags": [
@@ -1291,6 +1327,24 @@
         },
         "additionalProperties": false
       },
+      "AuthVendedor": {
+        "required": [
+          "password",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateEnderecoDto": {
         "required": [
           "bairro",
@@ -1487,7 +1541,6 @@
       },
       "CreateUsuarioDto": {
         "required": [
-          "cep",
           "confSenha",
           "cpf",
           "email",
@@ -1505,21 +1558,6 @@
           },
           "userName": {
             "minLength": 1,
-            "type": "string"
-          },
-          "idade": {
-            "maximum": 120,
-            "minimum": 18,
-            "type": "integer",
-            "format": "int32"
-          },
-          "telefone": {
-            "type": "string",
-            "nullable": true
-          },
-          "cep": {
-            "maxLength": 8,
-            "minLength": 8,
             "type": "string"
           },
           "cpf": {
@@ -1551,7 +1589,8 @@
           },
           "enderecoId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1560,7 +1599,9 @@
         "required": [
           "cnpj",
           "email",
+          "nome",
           "password",
+          "telefoneVend",
           "userName"
         ],
         "type": "object",
@@ -1575,9 +1616,9 @@
             "minLength": 14,
             "type": "string"
           },
-          "telefoneVend": {
-            "type": "string",
-            "nullable": true
+          "nome": {
+            "minLength": 1,
+            "type": "string"
           },
           "avaliacao": {
             "type": "number",
@@ -1586,6 +1627,10 @@
           "numDeAvaliacao": {
             "type": "integer",
             "format": "int32"
+          },
+          "telefoneVend": {
+            "minLength": 1,
+            "type": "string"
           },
           "email": {
             "minLength": 1,
@@ -1602,7 +1647,8 @@
           },
           "enderecoId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1848,7 +1894,7 @@
             "type": "string",
             "nullable": true
           },
-          "cep": {
+          "role": {
             "type": "string",
             "nullable": true
           },
@@ -2013,57 +2059,38 @@
         "additionalProperties": false
       },
       "UpdateUsuarioDto": {
-        "required": [
-          "cep",
-          "cpf",
-          "email",
-          "numeroResid",
-          "password",
-          "userName"
-        ],
         "type": "object",
         "properties": {
           "userName": {
             "maxLength": 70,
             "minLength": 0,
-            "type": "string"
-          },
-          "idade": {
-            "maximum": 120,
-            "minimum": 18,
-            "type": "integer",
-            "format": "int32"
-          },
-          "telefone": {
             "type": "string",
             "nullable": true
-          },
-          "cep": {
-            "maxLength": 8,
-            "minLength": 8,
-            "type": "string"
           },
           "cpf": {
             "maxLength": 11,
             "minLength": 11,
-            "type": "string"
-          },
-          "sexo": {
             "type": "string",
             "nullable": true
           },
           "email": {
-            "minLength": 1,
             "type": "string",
-            "format": "email"
+            "format": "email",
+            "nullable": true
           },
           "password": {
             "minLength": 6,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "numeroResid": {
             "type": "integer",
             "format": "int64"
+          },
+          "enderecoId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false

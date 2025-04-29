@@ -1,20 +1,17 @@
 ﻿
 
+using APIVoiture.Data;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace APIVoiture.Models;
 
-public class Usuario : IdentityUser
+public class Usuario : ApplicationUser
 {
-    [Range(18,120,ErrorMessage = "O usuario nao pode ter mais de 120 nem menos de 18")]
-    [Required]
-    public string nome { get; set; }
-    public int idade { get; set; }
-    public string telefone  { get; set; }
-    [MinLength(8,ErrorMessage ="CEP menor que tamanho minimo")]
-    [MaxLength(8,ErrorMessage ="CEP maior que tamanho maximo")]
-    public string CEP {  get; set; }
+   
+    
+    
+    
     [MinLength(11,ErrorMessage ="Cpf Menor que 11")]
     [MaxLength(11,ErrorMessage ="Cpf Maior que 11")]
     [Required(ErrorMessage ="Cpf esta ausente")]
@@ -28,8 +25,8 @@ public class Usuario : IdentityUser
     public virtual ICollection<VendedorCliente> VendedorCliente { get; set; } //n:n
     public virtual ICollection<Pagamento> Pagamentos { get; set; }
 
-    [Required]
-    public int EnderecoId { get; set; }
+   
+    public int? EnderecoId { get; set; }
     public virtual Endereco Endereco { get; set; }
 
     public Usuario() : base() {

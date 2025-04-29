@@ -14,10 +14,10 @@ namespace APIVoiture.Data.DTOs
 
         public string Telefone { get; set; }
 
-        
-        public string CEP { get; set; }
 
-        
+        public string Role { get; set; }
+
+
         public string CPF { get; set; }
 
         public string Sexo { get; set; }

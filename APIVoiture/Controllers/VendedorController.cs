@@ -4,6 +4,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using APIVoiture.Data;
+using APIVoiture.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace APIVoiture.Controllers
 {
@@ -13,20 +15,30 @@ namespace APIVoiture.Controllers
     {
         private UsuarioContext _context;
         private IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private VendedorServices _vendedorService;
 
-        public VendedorController(UsuarioContext context, IMapper mapper)
+        public VendedorController(UsuarioContext context, IMapper mapper, UserManager<ApplicationUser> userManager, VendedorServices vendedorService)
         {
             _context = context;
             _mapper = mapper;
+            _userManager = userManager;
+            _vendedorService = vendedorService;
+
         }
 
         [HttpPost]
-        public IActionResult AdicionaVendedor([FromBody] CreateVendedorDto vendedorDto)
+        public async Task<IActionResult> AdicionaVendedor(CreateVendedorDto vendedorDto)
         {
-            Vendedor vendedor = _mapper.Map<Vendedor>(vendedorDto);
-            _context.Vendedor.Add(vendedor);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(RecuperaVendedorPorId), new { Id = vendedor.Id }, vendedor);
+            await _vendedorService.Cadastra(vendedorDto);
+            return Ok("Cadastrado!");
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(AuthVendedor dto)
+        {
+            var token = await _vendedorService.Login(dto);
+            return Ok(token);
         }
 
         [HttpGet]
