@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIVoiture")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52ecef21979784c683c024368c7fd72417d16024")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+738819dc461c226b07f10c08d9a4aa1b7f800d18")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIVoiture")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIVoiture")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -17,6 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
+
 var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
 
 // Configurar AutoMapper
@@ -67,7 +68,7 @@ builder.Services.AddAuthorization(opt =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
-        builder => builder.WithOrigins("http://localhost:5173")
+        builder => builder.WithOrigins("http://localhost:5000")
                           .AllowAnyMethod()
                           .AllowAnyHeader());
     options.AddPolicy("AllowAllOrigins",
