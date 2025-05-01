@@ -22,8 +22,6 @@ namespace APIVoiture.Models
         public string modelo { get; set; }
         [Required]
         [StringLength(50)]
-        public string marca { get; set; }
-        [Required(ErrorMessage = "ano is required")]
         //asasasbskfslkfs          
         public int ano { get; set; }
         [StringLength(10, ErrorMessage = "max of valvulas is 10 chars")]

@@ -3,6 +3,7 @@ using APIVoiture.Data.DTOs;
 using APIVoiture.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace APIVoiture.Services;
 
@@ -46,7 +47,7 @@ public class UsuarioServices
             var re = await _signInManager.PasswordSignInAsync(user.UserName, dto.Password, false, false);
             if (!re.Succeeded)
             {
-                throw new ApplicationException("Deu ruim");
+                throw new ApplicationException("Senha não encontrada");
             }
             var usuario = _signInManager.UserManager.Users.FirstOrDefault(x => x.NormalizedUserName == dto.Email.ToUpper());
             return _tokenService.GenerateToken(usuario);
