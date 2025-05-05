@@ -154,7 +154,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "cinemaDto",
+        "Name": "enderecoDto",
         "Type": "APIVoiture.Data.DTOs.CreateEnderecoDto",
         "IsRequired": true
       }
@@ -223,58 +223,6 @@
     "Method": "DeletaCinema",
     "RelativePath": "Endereco/{id}",
     "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.MCController",
-    "Method": "AdicionaSessao",
-    "RelativePath": "MC",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "APIVoiture.Data.DTOs.CreateMCDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.MCController",
-    "Method": "RecuperaSessoes",
-    "RelativePath": "MC",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIVoiture.Data.DTOs.ReadMCDto, APIVoiture, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.MCController",
-    "Method": "RecuperaSessoesPorId",
-    "RelativePath": "MC/{id}",
-    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -397,16 +345,51 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.PecaController",
-    "Method": "CreatePagamento",
+    "Method": "CreatePeca",
     "RelativePath": "Peca",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "pecaCreateDto",
-        "Type": "APIVoiture.Data.DTOs.CreatePecaDto",
-        "IsRequired": true
+        "Name": "nomePeca",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "preco",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "descricao",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "imagem",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "qntd",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "fabricante",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "garantia",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "VendedorId",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -534,6 +517,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.UsuarioController",
+    "Method": "GetUserRoles",
+    "RelativePath": "Usuario/getRole/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "APIVoiture.Controllers.UsuarioController",
@@ -689,6 +688,22 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.VendedorController",
+    "Method": "GetUserRoles",
+    "RelativePath": "Vendedor/getRole/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorController",
     "Method": "Login",
     "RelativePath": "Vendedor/login",
     "HttpMethod": "POST",
@@ -698,6 +713,22 @@
       {
         "Name": "dto",
         "Type": "APIVoiture.Data.DTOs.AuthVendedor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorController",
+    "Method": "ProcurarEmail",
+    "RelativePath": "Vendedor/verEmail/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

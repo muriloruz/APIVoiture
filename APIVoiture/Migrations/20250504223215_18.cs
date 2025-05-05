@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APIVoiture.Migrations
 {
-    public partial class init : Migration
+    public partial class _18 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,10 +64,6 @@ namespace APIVoiture.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     cidade = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    complemento = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    unidade = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     uf = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -85,9 +81,7 @@ namespace APIVoiture.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     modelo = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    marca = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ano = table.Column<int>(type: "int", nullable: false),
+                    ano = table.Column<int>(type: "int", maxLength: 50, nullable: false),
                     valvulas = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     cambio = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
@@ -224,6 +218,8 @@ namespace APIVoiture.Migrations
                     CPF = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     numeroResid = table.Column<long>(type: "bigint", nullable: false),
+                    unidade = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     EnderecoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -255,6 +251,9 @@ namespace APIVoiture.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     avaliacao = table.Column<double>(type: "double", nullable: false),
                     numDeAvaliacao = table.Column<int>(type: "int", nullable: false),
+                    numCasa = table.Column<long>(type: "bigint", nullable: false),
+                    complemento = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RePassword = table.Column<string>(type: "longtext", nullable: false)
@@ -290,7 +289,8 @@ namespace APIVoiture.Migrations
                     preco = table.Column<double>(type: "double", nullable: false),
                     descricao = table.Column<string>(type: "varchar(1500)", maxLength: 1500, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    imagem = table.Column<byte[]>(type: "longblob", nullable: false),
+                    imagem = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     qntd = table.Column<int>(type: "int", nullable: false),
                     fabricante = table.Column<string>(type: "varchar(85)", maxLength: 85, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),

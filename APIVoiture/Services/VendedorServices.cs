@@ -30,7 +30,7 @@ namespace APIVoiture.Services
             Vendedor usuario = _mapper.Map<Vendedor>(userDTO);
             
                 var re = await _userManager.CreateAsync(usuario, userDTO.Password);
-                await _userManager.AddToRoleAsync(usuario, "Vendedor");
+                await _userManager.AddToRoleAsync(usuario, "VENDEDOR");
                 if (!re.Succeeded)
                 {
                     throw new ApplicationException("Falha ao cadastrar!");

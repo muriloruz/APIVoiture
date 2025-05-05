@@ -14,5 +14,8 @@ namespace APIVoiture.Data.DTOs
         public string telefoneVend { get; set; }
         public double avaliacao { get; set; }
         public int numDeAvaliacao { get; set; }
+        [Required]
+        public long numCasa { get; set; }
+        public string complemento { get; set; }
     }
 }

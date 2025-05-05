@@ -15,7 +15,7 @@ namespace APIVoiture.Data.DTOs
  
         
         public string complemento { get; set; }
-        public string unidade { get; set; }
+
         
         public string uf { get; set; }
     }

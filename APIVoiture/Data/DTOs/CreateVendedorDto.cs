@@ -15,6 +15,8 @@ public class CreateVendedorDto
     public string Nome { get; set; }
     public double avaliacao { get; set; }
     public int numDeAvaliacao { get; set; }
+    
+    public long numCasa { get; set; }
     [Required]
     public string telefoneVend { get; set; }
     [Required]
@@ -22,6 +24,9 @@ public class CreateVendedorDto
     public string Email { get; set; }
     [Required]
     public string Password { get; set; }
+    [StringLength(70, ErrorMessage = "max size of rua is 70")]
+    [Required]
+    public string complemento { get; set; }
     public string RePassword { get; set; }
     public int? EnderecoId { get; set; }
 }

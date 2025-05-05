@@ -178,101 +178,6 @@
         }
       }
     },
-    "/MC": {
-      "post": {
-        "tags": [
-          "MC"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateMCDto"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateMCDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateMCDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateMCDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "MC"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReadMCDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReadMCDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReadMCDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/MC/{id}": {
-      "get": {
-        "tags": [
-          "MC"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/Pagamento": {
       "get": {
         "tags": [
@@ -475,24 +380,73 @@
         ],
         "requestBody": {
           "content": {
-            "application/json-patch+json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreatePecaDto"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreatePecaDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreatePecaDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreatePecaDto"
+                "required": [
+                  "descricao",
+                  "fabricante",
+                  "garantia",
+                  "nomePeca",
+                  "preco",
+                  "qntd",
+                  "VendedorId"
+                ],
+                "type": "object",
+                "properties": {
+                  "nomePeca": {
+                    "type": "string"
+                  },
+                  "preco": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "imagem": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "qntd": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "fabricante": {
+                    "type": "string"
+                  },
+                  "garantia": {
+                    "type": "string"
+                  },
+                  "VendedorId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "nomePeca": {
+                  "style": "form"
+                },
+                "preco": {
+                  "style": "form"
+                },
+                "descricao": {
+                  "style": "form"
+                },
+                "imagem": {
+                  "style": "form"
+                },
+                "qntd": {
+                  "style": "form"
+                },
+                "fabricante": {
+                  "style": "form"
+                },
+                "garantia": {
+                  "style": "form"
+                },
+                "VendedorId": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -740,6 +694,28 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Usuario/getRole/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -1095,6 +1071,50 @@
         }
       }
     },
+    "/Vendedor/verEmail/{email}": {
+      "get": {
+        "tags": [
+          "Vendedor"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Vendedor/getRole/{id}": {
+      "get": {
+        "tags": [
+          "Vendedor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Vendedor/{id}": {
       "get": {
         "tags": [
@@ -1375,77 +1395,10 @@
             "minLength": 0,
             "type": "string"
           },
-          "complemento": {
-            "maxLength": 70,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "unidade": {
-            "maxLength": 30,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
           "uf": {
             "maxLength": 2,
             "minLength": 0,
             "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateMCDto": {
-        "required": [
-          "ano",
-          "marca",
-          "modelo",
-          "produto"
-        ],
-        "type": "object",
-        "properties": {
-          "modelo": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
-          },
-          "marca": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
-          },
-          "ano": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "valvulas": {
-            "maxLength": 10,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "cambio": {
-            "maxLength": 20,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "carroceria": {
-            "maxLength": 35,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "produto": {
-            "maxLength": 35,
-            "minLength": 0,
-            "type": "string"
-          },
-          "codProdOriginal": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1496,56 +1449,12 @@
         },
         "additionalProperties": false
       },
-      "CreatePecaDto": {
-        "type": "object",
-        "properties": {
-          "nomePeca": {
-            "type": "string",
-            "nullable": true
-          },
-          "preco": {
-            "type": "number",
-            "format": "double"
-          },
-          "descricao": {
-            "type": "string",
-            "nullable": true
-          },
-          "imagem": {
-            "type": "string",
-            "format": "byte",
-            "nullable": true
-          },
-          "qntd": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fabricante": {
-            "type": "string",
-            "nullable": true
-          },
-          "garantia": {
-            "type": "string",
-            "nullable": true
-          },
-          "vendedorId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "modeloCarroid": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "CreateUsuarioDto": {
         "required": [
           "confSenha",
           "cpf",
           "email",
           "nome",
-          "numeroResid",
           "password",
           "userName"
         ],
@@ -1579,10 +1488,6 @@
             "minLength": 1,
             "type": "string"
           },
-          "numeroResid": {
-            "type": "integer",
-            "format": "int64"
-          },
           "pecaId": {
             "type": "integer",
             "format": "int32"
@@ -1598,6 +1503,7 @@
       "CreateVendedorDto": {
         "required": [
           "cnpj",
+          "complemento",
           "email",
           "nome",
           "password",
@@ -1628,6 +1534,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "numCasa": {
+            "type": "integer",
+            "format": "int64"
+          },
           "telefoneVend": {
             "minLength": 1,
             "type": "string"
@@ -1639,6 +1549,11 @@
           },
           "password": {
             "minLength": 1,
+            "type": "string"
+          },
+          "complemento": {
+            "maxLength": 70,
+            "minLength": 0,
             "type": "string"
           },
           "rePassword": {
@@ -1717,53 +1632,7 @@
             "type": "string",
             "nullable": true
           },
-          "unidade": {
-            "type": "string",
-            "nullable": true
-          },
           "uf": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ReadMCDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "modelo": {
-            "type": "string",
-            "nullable": true
-          },
-          "marca": {
-            "type": "string",
-            "nullable": true
-          },
-          "ano": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "valvulas": {
-            "type": "string",
-            "nullable": true
-          },
-          "cambio": {
-            "type": "string",
-            "nullable": true
-          },
-          "carroceria": {
-            "type": "string",
-            "nullable": true
-          },
-          "produto": {
-            "type": "string",
-            "nullable": true
-          },
-          "codProdOriginal": {
             "type": "string",
             "nullable": true
           }
@@ -1829,7 +1698,6 @@
           },
           "imagem": {
             "type": "string",
-            "format": "byte",
             "nullable": true
           },
           "qntd": {
@@ -1939,9 +1807,21 @@
             "type": "string",
             "nullable": true
           },
-          "nomeVendedor": {
+          "nome": {
             "type": "string",
             "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
+          },
+          "numCasa": {
+            "type": "integer",
+            "format": "int64"
           },
           "cnpj": {
             "type": "string",
@@ -1970,7 +1850,6 @@
           "bairro",
           "cep",
           "cidade",
-          "numero",
           "rua",
           "uf"
         ],
@@ -1995,22 +1874,6 @@
             "maxLength": 40,
             "minLength": 0,
             "type": "string"
-          },
-          "numero": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "complemento": {
-            "maxLength": 70,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "unidade": {
-            "maxLength": 30,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
           },
           "uf": {
             "maxLength": 2,
@@ -2083,6 +1946,10 @@
             "type": "string",
             "nullable": true
           },
+          "complemento": {
+            "type": "integer",
+            "format": "int64"
+          },
           "numeroResid": {
             "type": "integer",
             "format": "int64"
@@ -2098,7 +1965,8 @@
       "UpdateVendedorDto": {
         "required": [
           "cnpj",
-          "nomeVendedor"
+          "nomeVendedor",
+          "numCasa"
         ],
         "type": "object",
         "properties": {
@@ -2123,6 +1991,14 @@
           "numDeAvaliacao": {
             "type": "integer",
             "format": "int32"
+          },
+          "numCasa": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

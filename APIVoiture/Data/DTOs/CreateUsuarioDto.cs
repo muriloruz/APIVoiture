@@ -34,8 +34,8 @@ public class CreateUsuarioDto
     [Compare("Password")]
     public string ConfSenha { get; set; }
 
-    [Required]
-    public long numeroResid { get; set; }
+    
+    
     public int PecaId { get; set; }
     public int? EnderecoId { get; set; }
     

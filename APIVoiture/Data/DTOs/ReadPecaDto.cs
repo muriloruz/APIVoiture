@@ -9,7 +9,7 @@ namespace APIVoiture.Data.DTOs
         public string nomePeca { get; set; }
         public double preco { get; set; }
         public string descricao { get; set; }
-        public byte[] imagem { get; set; }
+        public string imagem { get; set; }
         public int qntd { get; set; }
         public string fabricante { get; set; }
         public string garantia { get; set; }

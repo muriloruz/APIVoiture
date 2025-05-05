@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-using static APIVoiture.Controllers.MCController;
 
 var builder = WebApplication.CreateBuilder(args);
 //var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
@@ -25,7 +24,6 @@ var mapperConfig = new MapperConfiguration(mc =>
 {
     mc.AddProfile(new VendedorProfile());
     mc.AddProfile(new EnderecoProfile());
-    mc.AddProfile(new MCProfile());
     mc.AddProfile(new UsuarioProfile());
     mc.AddProfile(new VendedorClienteProfile());
     mc.AddProfile(new PagamentoProfile());

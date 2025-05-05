@@ -50,6 +50,20 @@ public class UsuarioController : ControllerBase
         }
         
     }
+    [HttpGet("getRole/{id}")]
+    public async Task<IActionResult> GetUserRoles(string id)
+    {
+        var u = await _userManager.FindByIdAsync(id);
+        if(u == null)
+        {
+            return NotFound("Usuario nao localizado");
+        }
+        var roles = await _userManager.GetRolesAsync(u);
+        return Ok(new
+        {
+            Roles = roles
+        });
+    }
 
 
     [HttpGet("single/{id}")]

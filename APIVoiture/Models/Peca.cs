@@ -35,7 +35,7 @@ public class Peca
 	[StringLength(1500)]
 	public string descricao {  get; set; }
 	[Required]
-	public byte[] imagem { get; set; }
+	public string imagem { get; set; }
 	[Required]
 	public int qntd { get; set; }
 	[Required]
@@ -45,9 +45,7 @@ public class Peca
     public String garantia { get; set; }
 
 
-	[Required]
-	public int ModeloCarroid { get; set; }
-	public virtual ModeloCarro ModeloCarro { get; set; }
+	
 
 
     [Required]

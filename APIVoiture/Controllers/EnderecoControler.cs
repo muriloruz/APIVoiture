@@ -23,17 +23,17 @@ namespace APIVoiture.Controllers
 
 
         [HttpPost]
-        public IActionResult AdicionaCinema([FromBody] CreateEnderecoDto cinemaDto)
+        public IActionResult AdicionaCinema([FromBody] CreateEnderecoDto enderecoDto)
         {
-            Endereco cinema = _mapper.Map<Endereco>(cinemaDto);
-            Endereco endere = _context.Enderecos.FirstOrDefault(x => x.CEP == cinemaDto.CEP);
+            Endereco endereco = _mapper.Map<Endereco>(enderecoDto);
+            Endereco endere = _context.Enderecos.FirstOrDefault(x => x.CEP == enderecoDto.CEP);
             if (endere == null)
             {
-                _context.Enderecos.Add(cinema);
+                _context.Enderecos.Add(endereco);
                 _context.SaveChanges();
-                return CreatedAtAction(nameof(RecuperaCinemasPorId), new { Id = cinema.id }, cinemaDto);
+                return Ok(endereco.id);
             }
-            return Ok(cinema);
+            return Ok(endere.id);
         }
 
         [HttpGet]

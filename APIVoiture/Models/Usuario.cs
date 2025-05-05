@@ -16,10 +16,10 @@ public class Usuario : ApplicationUser
     [MaxLength(11,ErrorMessage ="Cpf Maior que 11")]
     [Required(ErrorMessage ="Cpf esta ausente")]
     public string CPF { get; set; }
-    [Required]
     public long numeroResid { get; set; }
 
-
+    [StringLength(30, ErrorMessage = "max size of unidade is 30")]
+    public string? unidade { get; set; }
 
     public virtual ICollection<Peca> Pecas { get; set; }
     public virtual ICollection<VendedorCliente> VendedorCliente { get; set; } //n:n

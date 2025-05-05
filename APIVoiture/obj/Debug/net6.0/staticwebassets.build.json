@@ -1,12 +1,125 @@
 {
   "Version": 1,
-  "Hash": "08gkswXPVoGdJTC6uo9NRNWbnNEDuK+FEbEzZvh459k=",
+  "Hash": "yETnMPhvEkc+FF2mljzT+/1cPZyZo9yBD2Y1JLWQW6c=",
   "Source": "APIVoiture",
   "BasePath": "_content/APIVoiture",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "APIVoiture\\wwwroot",
+      "Source": "APIVoiture",
+      "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
+      "BasePath": "_content/APIVoiture",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
+      "SourceId": "APIVoiture",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
+      "BasePath": "_content/APIVoiture",
+      "RelativePath": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5ipweew5fc",
+      "Integrity": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.5ipweew5fc.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "0"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 06:28:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5ipweew5fc"
+        },
+        {
+          "Name": "label",
+          "Value": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "0"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 06:28:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+        }
+      ]
+    }
+  ]
 }

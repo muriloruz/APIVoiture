@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using APIVoiture.Data;
 using APIVoiture.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIVoiture.Controllers
 {
@@ -40,6 +41,15 @@ namespace APIVoiture.Controllers
             var token = await _vendedorService.Login(dto);
             return Ok(token);
         }
+        [HttpGet("verEmail/{email}")]
+        public async Task<IActionResult> ProcurarEmail(string email)
+        {
+            var u = await _userManager.FindByEmailAsync(email);
+            if (u == null) return NotFound();
+            return Ok();
+        }
+
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ReadVendedorDto>>> RecuperaEnderecos()
@@ -49,17 +59,28 @@ namespace APIVoiture.Controllers
             return Ok(readVend);
         }
 
+        [HttpGet("getRole/{id}")]
+        public async Task<IActionResult> GetUserRoles(string id)
+        {
+            var u = await _userManager.FindByIdAsync(id);
+            if (u == null)
+            {
+                return NotFound("Usuario nao localizado");
+            }
+            var roles = await _userManager.GetRolesAsync(u);
+            return Ok(new
+            {
+                Roles = roles
+            });
+        }
+
         [HttpGet("{id}")]
         public IActionResult RecuperaVendedorPorId(string id)
         {
-            Vendedor vendedor = _context.Vendedor.FirstOrDefault(vendedor => vendedor.Id == id);
-            if (vendedor != null)
-            {
-                ReadVendedorDto vendedorDto = _mapper.Map<ReadVendedorDto>(vendedor);
-
-                return Ok(vendedorDto);
-            }
-            return NotFound();
+            var vend = _context.Vendedor.FirstOrDefault(user => user.Id == id);
+            if (vend == null) return NotFound();
+            var vendDto = _mapper.Map<ReadVendedorDto>(vend);
+            return Ok(vendDto);
         }
 
         [HttpPut("{id}")]

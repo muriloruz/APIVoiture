@@ -18,9 +18,9 @@ public class Vendedor : ApplicationUser
     public string telefoneVend { get; set; }
     public double avaliacao { get; set; }
     public int numDeAvaliacao { get; set; }
-    
-    
+    public long numCasa {  get; set; }
 
+    public string complemento { get; set; }
     [Required]
     public string Password { get; set; }
     [Required]

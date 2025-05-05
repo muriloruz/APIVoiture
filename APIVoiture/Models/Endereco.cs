@@ -21,10 +21,8 @@ public class Endereco
     [Required(ErrorMessage = "cidade required")]
     [StringLength(40, ErrorMessage = "max size of cidade is 40")]
     public string cidade { get; set; }
-    [StringLength(70, ErrorMessage = "max size of rua is 70")]
-    public string complemento { get; set; }
-    [StringLength(30, ErrorMessage = "max size of unidade is 30")]
-    public string unidade { get; set; }
+    
+    
     [Required(ErrorMessage = "uf required")]
     [StringLength(2, ErrorMessage = "max size of uf is 2")]
     public string uf { get; set; }

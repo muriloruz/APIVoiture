@@ -22,7 +22,7 @@ public class UpdateUsuarioDto
     [MinLength(6, ErrorMessage = "A Senha deve ter pelo menos 6 caracteres.")]
     public string? Password { get; set; }
 
-    
+    public long Complemento { get; set; }
     public long numeroResid { get; set; }
 
     public int? EnderecoId { get; set; }

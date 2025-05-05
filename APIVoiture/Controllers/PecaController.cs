@@ -21,10 +21,15 @@ public class PecaController : ControllerBase
         _mapper = mapper;
     }
     [HttpPost]
-    [Authorize(Policy = "VendedorPolicy")]
-    public ActionResult<ReadPecaDto> CreatePagamento([FromBody] CreatePecaDto pecaCreateDto)
+    
+    public ActionResult<ReadPecaDto> CreatePeca([FromForm]CreatePecaDto pecaCreateDto)
     {
         var peca = _mapper.Map<Peca>(pecaCreateDto);
+        if (pecaCreateDto.imagem != null) {
+            var caminho = Path.Combine("wwwroot/imagens", pecaCreateDto.imagem.FileName);
+            using var stream = new FileStream(caminho, FileMode.Create);
+            peca.imagem = pecaCreateDto.imagem.FileName;
+        }
         _context.Pecas.Add(peca);
         _context.SaveChanges();
 

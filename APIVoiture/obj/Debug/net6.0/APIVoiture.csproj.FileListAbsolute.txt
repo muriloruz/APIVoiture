@@ -187,4 +187,5 @@ C:\Users\Murilo\Desktop\github\APIVoiture\APIVoiture\obj\Debug\net6.0\staticweba
 C:\Users\Murilo\Desktop\github\APIVoiture\APIVoiture\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.APIVoiture.props
 C:\Users\Murilo\Desktop\github\APIVoiture\APIVoiture\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.APIVoiture.props
 C:\Users\Murilo\Desktop\github\APIVoiture\APIVoiture\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\Murilo\Desktop\github\APIVoiture\APIVoiture\bin\Debug\net6.0\APIVoiture.staticwebassets.runtime.json
 C:\Users\Murilo\Desktop\github\APIVoiture\APIVoiture\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt

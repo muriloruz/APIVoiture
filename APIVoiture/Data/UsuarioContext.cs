@@ -22,7 +22,6 @@ public class UsuarioContext : IdentityDbContext<ApplicationUser>
     public DbSet<Usuario> usuarios { get; set; }
     public DbSet<Endereco> Enderecos { get; set; }
     public DbSet<Vendedor> Vendedor { get; set; }
-    public DbSet<ModeloCarro> ModeloCarros { get; set; }
     public DbSet<VendedorCliente> VendedorClientes { get; set; }
     public DbSet<Pagamento> Pagamento { get; set; }
     public DbSet<Peca> Pecas { get; set; }
