@@ -511,19 +511,18 @@
         }
       }
     },
-    "/{id}": {
+    "/Peca/{nome}": {
       "get": {
         "tags": [
           "Peca"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "nome",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -533,23 +532,34 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ReadPecaDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReadPecaDto"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ReadPecaDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReadPecaDto"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ReadPecaDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReadPecaDto"
+                  }
                 }
               }
             }
           }
         }
-      },
+      }
+    },
+    "/{id}": {
       "patch": {
         "tags": [
           "Peca"
@@ -625,6 +635,46 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/Peca/{id}": {
+      "get": {
+        "tags": [
+          "Peca"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadPecaDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadPecaDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadPecaDto"
+                }
+              }
+            }
           }
         }
       }

@@ -8,6 +8,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
+
 
 // Configurar AutoMapper
 var mapperConfig = new MapperConfiguration(mc =>
@@ -67,8 +69,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
         builder => builder.WithOrigins("http://localhost:5000")
-                          .AllowAnyMethod()
-                          .AllowAnyHeader());
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
     options.AddPolicy("AllowAllOrigins",
         builder =>
         {
@@ -106,15 +108,40 @@ if (app.Environment.IsDevelopment())
 
 
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 // Usar CORS
-app.UseCors("AllowSpecificOrigin");
+ app.UseCors("AllowSpecificOrigin");
 
-app.Use(async (context, next) =>
+// app.Use(async (context, next) =>
+// {
+//     context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+//     await next();
+// });
+// app.Use(async (context, next) =>
+// {
+//     if (context.Request.Path.StartsWithSegments("/imagens"))
+//     {
+//         var filePath = Path.Combine(builder.Environment.ContentRootPath, "wwwroot", context.Request.Path.Value.Substring(1));
+//         Console.WriteLine($"Requisição para arquivo estático: {filePath}");
+//         if (File.Exists(filePath))
+//         {
+//             Console.WriteLine($"Arquivo encontrado.");
+//         }
+//         else
+//         {
+//             Console.WriteLine($"Arquivo NÃO encontrado.");
+//         }
+//     }
+//     await next();
+// });
+
+app.UseStaticFiles(new StaticFileOptions
 {
-    context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
-    await next();
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "imagens")
+    ),
+    RequestPath = "/imagens"
 });
 
 
