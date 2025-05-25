@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIVoiture.Migrations
 {
     [DbContext(typeof(UsuarioContext))]
-    [Migration("20250504224637_19")]
-    partial class _19
+    [Migration("20250518201722_idHistorico")]
+    partial class idHistorico
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,6 +116,29 @@ namespace APIVoiture.Migrations
                     b.ToTable("Enderecos");
                 });
 
+            modelBuilder.Entity("APIVoiture.Models.Favorito", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("PecaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("PecaId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("Favorito");
+                });
+
             modelBuilder.Entity("APIVoiture.Models.Pagamento", b =>
                 {
                     b.Property<int>("Id")
@@ -149,9 +172,6 @@ namespace APIVoiture.Migrations
                         .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("varchar(25)");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -221,7 +241,15 @@ namespace APIVoiture.Migrations
                     b.Property<string>("UsuarioId")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PecaId")
+                        .HasColumnType("int");
+
                     b.HasKey("VendedorId", "UsuarioId");
+
+                    b.HasIndex("PecaId");
 
                     b.HasIndex("UsuarioId");
 
@@ -411,6 +439,25 @@ namespace APIVoiture.Migrations
                     b.ToTable("Vendedores", (string)null);
                 });
 
+            modelBuilder.Entity("APIVoiture.Models.Favorito", b =>
+                {
+                    b.HasOne("APIVoiture.Models.Peca", "Peca")
+                        .WithMany("Favorito")
+                        .HasForeignKey("PecaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("APIVoiture.Models.Usuario", "User")
+                        .WithMany("Favorito")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Peca");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("APIVoiture.Models.Pagamento", b =>
                 {
                     b.HasOne("APIVoiture.Models.Usuario", "Cliente")
@@ -449,6 +496,12 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.VendedorCliente", b =>
                 {
+                    b.HasOne("APIVoiture.Models.Peca", "Peca")
+                        .WithMany("VendedorCliente")
+                        .HasForeignKey("PecaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("APIVoiture.Models.Usuario", "Usuario")
                         .WithMany("VendedorCliente")
                         .HasForeignKey("UsuarioId")
@@ -460,6 +513,8 @@ namespace APIVoiture.Migrations
                         .HasForeignKey("VendedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Peca");
 
                     b.Navigation("Usuario");
 
@@ -508,11 +563,17 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.Peca", b =>
                 {
+                    b.Navigation("Favorito");
+
                     b.Navigation("Pagamento");
+
+                    b.Navigation("VendedorCliente");
                 });
 
             modelBuilder.Entity("APIVoiture.Models.Usuario", b =>
                 {
+                    b.Navigation("Favorito");
+
                     b.Navigation("Pagamentos");
 
                     b.Navigation("Pecas");

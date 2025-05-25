@@ -6,7 +6,8 @@ namespace APIVoiture.Data.DTOs
     {
         [Required(ErrorMessage = "nome is required")]
         [StringLength(70, ErrorMessage = "max chars of name is 70")]
-        public string nomeVendedor { get; set; }
+        public string nome { get; set; }
+        public string userName { get; set; }
         [Required(ErrorMessage = "cnpj is required")]
         [MinLength(14, ErrorMessage = "max and minimal chars of cnpj is 14")]
         [MaxLength(14, ErrorMessage = "max and minimal chars of cnpj is 14")]
@@ -17,5 +18,6 @@ namespace APIVoiture.Data.DTOs
         [Required]
         public long numCasa { get; set; }
         public string complemento { get; set; }
+        public int? EnderecoId { get; set; }
     }
 }

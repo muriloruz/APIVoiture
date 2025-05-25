@@ -8,7 +8,9 @@ namespace APIVoiture.Profiles
     {
         public PecaProfile() {
             CreateMap<Peca, ReadPecaDto>()
-                .ForMember(dest => dest.VendedorAvaliacao, opt => opt.MapFrom(src => src.Vendedor.avaliacao))
+                .ForMember(dest => dest.VendedorEmail, opt => opt.MapFrom(src => src.Vendedor.UserName))
+                .ForMember(dest => dest.VendedorTelefone, opt => opt.MapFrom(src => src.Vendedor.telefoneVend))
+                .ForMember(dest => dest.VendedorNome, opt => opt.MapFrom(src => src.Vendedor.nome))
                 .ForMember(dest => dest.PagamentoStatus, opt => opt.MapFrom(src => src.Pagamento));
             CreateMap<CreatePecaDto, Peca>();
             CreateMap<UpdatePecaDto, Peca>();

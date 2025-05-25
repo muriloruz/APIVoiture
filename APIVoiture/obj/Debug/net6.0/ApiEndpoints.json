@@ -1,42 +1,5 @@
 [
   {
-    "ContainingType": "APIVoiture.Controllers.PecaController",
-    "Method": "updatePecaPatch",
-    "RelativePath": "{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "patch",
-        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.PecaController",
-    "Method": "DeletePeca",
-    "RelativePath": "{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "APIVoiture.Controllers.AcessoController",
     "Method": "Get",
     "RelativePath": "Acesso",
@@ -44,79 +7,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
-    "Method": "GetVendedorClientes",
-    "RelativePath": "api/VendedorCliente",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIVoiture.Data.DTOs.VendedorClienteDTO, APIVoiture, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
-    "Method": "CreateVendedorCliente",
-    "RelativePath": "api/VendedorCliente",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "vendedorClienteDTO",
-        "Type": "APIVoiture.Data.DTOs.VendedorClienteDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
-    "Method": "DeleteVendedorCliente",
-    "RelativePath": "api/VendedorCliente/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
-    "Method": "GetById",
-    "RelativePath": "api/VendedorCliente/{usuarioId}/{vendedorId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuarioId",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "vendedorId",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {
@@ -196,6 +86,54 @@
     "ContainingType": "APIVoiture.Controllers.EnderecoController",
     "Method": "DeletaCinema",
     "RelativePath": "Endereco/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.FavoritoController",
+    "Method": "CriarFavorito",
+    "RelativePath": "Favorito",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIVoiture.Data.DTOs.FavoritoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.FavoritoController",
+    "Method": "GetFavoritosUser",
+    "RelativePath": "Favorito/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.FavoritoController",
+    "Method": "DeletarFavoritos",
+    "RelativePath": "Favorito/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -400,6 +338,62 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.PecaController",
+    "Method": "UpdatePeca",
+    "RelativePath": "Peca/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "NomePeca",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descricao",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Garantia",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Fabricante",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Qntd",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Preco",
+        "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "VendedorId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Imagem",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.PecaController",
     "Method": "GetPeca",
     "RelativePath": "Peca/{id}",
     "HttpMethod": "GET",
@@ -426,6 +420,22 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.PecaController",
+    "Method": "DeletePeca",
+    "RelativePath": "Peca/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.PecaController",
     "Method": "GetPeca",
     "RelativePath": "Peca/{nome}",
     "HttpMethod": "GET",
@@ -449,6 +459,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.PecaController",
+    "Method": "ApagarPeca",
+    "RelativePath": "Peca/apagar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "APIVoiture.Controllers.UsuarioController",
@@ -609,6 +635,27 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.UsuarioController",
+    "Method": "ChangePassword",
+    "RelativePath": "Usuario/password/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "APIVoiture.Data.DTOs.ChangePasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.UsuarioController",
     "Method": "GetSingleUser",
     "RelativePath": "Usuario/single/{id}",
     "HttpMethod": "GET",
@@ -618,6 +665,38 @@
       {
         "Name": "id",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.UsuarioController",
+    "Method": "GetUser",
+    "RelativePath": "Usuario/users/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.UsuarioController",
+    "Method": "verificarEmail",
+    "RelativePath": "Usuario/verEmail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIVoiture.Data.DTOs.DtoEmailCNPJ",
         "IsRequired": true
       }
     ],
@@ -698,6 +777,27 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.VendedorController",
+    "Method": "updateUsuarioPatch",
+    "RelativePath": "Vendedor/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "patch",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorController",
     "Method": "DeletaVendedor",
     "RelativePath": "Vendedor/{id}",
     "HttpMethod": "DELETE",
@@ -746,6 +846,43 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.VendedorController",
+    "Method": "ChangePassword",
+    "RelativePath": "Vendedor/password/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "APIVoiture.Data.DTOs.ChangePasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorController",
+    "Method": "verificarEmail",
+    "RelativePath": "Vendedor/verEmail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIVoiture.Data.DTOs.DtoEmailCNPJ",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorController",
     "Method": "ProcurarEmail",
     "RelativePath": "Vendedor/verEmail/{email}",
     "HttpMethod": "GET",
@@ -759,5 +896,99 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
+    "Method": "GetVendedorClientes",
+    "RelativePath": "VendedorCliente",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIVoiture.Data.DTOs.VendedorClienteDTO, APIVoiture, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
+    "Method": "CreateVendedorCliente",
+    "RelativePath": "VendedorCliente",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vendedorClienteDTO",
+        "Type": "APIVoiture.Data.DTOs.VendedorClienteDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
+    "Method": "DeleteVendedorCliente",
+    "RelativePath": "VendedorCliente/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
+    "Method": "GetById",
+    "RelativePath": "VendedorCliente/{usuarioId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIVoiture.Controllers.VendedorClienteController",
+    "Method": "GetPeca",
+    "RelativePath": "VendedorCliente/pecas/{nome}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Object, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

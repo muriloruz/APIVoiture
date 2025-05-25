@@ -64,6 +64,35 @@ public class UsuarioController : ControllerBase
             Roles = roles
         });
     }
+    [HttpPost("verEmail")]
+    public async Task<IActionResult> verificarEmail(DtoEmailCNPJ dto)
+    {
+        var user = await _userManager.FindByEmailAsync(dto.Email);
+        if (user == null) return NotFound("Email não encontrado.");
+
+        var usuario = await _context.usuarios.FirstOrDefaultAsync(v => v.CPF == dto.CNPJ && v.Id == user.Id);
+
+        if (usuario == null) return NotFound("CPF não está vinculado ao email informado.");
+
+        return Ok(user.Id);
+    }
+    [HttpGet("users/{id}")]
+    public async Task<IActionResult> GetUser(string id)
+    {
+        var u = await _context.usuarios.FirstOrDefaultAsync(user => user.Id ==id);
+        var v = await _context.Vendedor.FirstOrDefaultAsync(vend => vend.Id ==id);
+
+        if (u == null && v == null)
+        {
+            return NotFound();
+        }
+        else if (v == null) {
+            var userDto = _mapper.Map<ReadUsuarioDto>(u);
+            return Ok(userDto);
+        }
+        var vendDto = _mapper.Map<ReadVendedorDto>(v);
+        return Ok(vendDto);
+    }
 
 
     [HttpGet("single/{id}")]
@@ -126,4 +155,16 @@ public class UsuarioController : ControllerBase
         _context.SaveChanges();
         return NoContent();
     }
+    [HttpPost("password/{id}")]
+    public async Task<IActionResult> ChangePassword(string id, [FromBody] ChangePasswordRequest dto)
+    {
+
+        var result = await _usuarioService.Recupera(id, dto.NewPassword);
+
+        if (result.Succeeded) {
+            return Ok();
+        }
+        return BadRequest();
+    }
+
 }

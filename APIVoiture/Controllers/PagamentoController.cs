@@ -19,7 +19,7 @@ public class PagamentoController : ControllerBase
         _mapper = mapper;
     }
 
-    // GET: api/Pagamento
+   
     [HttpGet]
     public ActionResult<IEnumerable<ReadPagamentoDto>> GetPagamentos()
     {
@@ -27,7 +27,7 @@ public class PagamentoController : ControllerBase
         return Ok(_mapper.Map<IEnumerable<ReadPagamentoDto>>(pagamentos));
     }
 
-    // GET: api/Pagamento/5
+    
     [HttpGet("{id}")]
     public ActionResult<ReadPagamentoDto> GetPagamento(int id)
     {
@@ -39,7 +39,7 @@ public class PagamentoController : ControllerBase
         return Ok(_mapper.Map<ReadPagamentoDto>(pagamento));
     }
 
-    // POST: api/Pagamento
+    
     [HttpPost]
     public ActionResult<ReadPagamentoDto> CreatePagamento([FromBody] CreatePagamentoDto pagamentoCreateDto)
     {

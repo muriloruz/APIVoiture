@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1GQP99xuGDAz0ac9OkviODSu9N8YaoMrHD/1ewSFZs4=",
+  "Hash": "dGCCusGHfUuowq56bpfrZ/Ow/fxJzfuUztd3WNNjr60=",
   "Source": "APIVoiture",
   "BasePath": "_content/APIVoiture",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100304.jpg",
+      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100184.jpg",
       "SourceId": "APIVoiture",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
       "BasePath": "_content/APIVoiture",
-      "RelativePath": "imagens/1000100304#[.{fingerprint}]?.jpg",
+      "RelativePath": "imagens/1000100184#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,32 +31,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "5ipweew5fc",
-      "Integrity": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "Fingerprint": "lclnemchqs",
+      "Integrity": "1bHSK7RZ5rgemzE1Tbsc6flY1kixyi2QIsvCMhGYaDg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagens\\1000100304.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100451.jpg",
-      "SourceId": "APIVoiture",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
-      "BasePath": "_content/APIVoiture",
-      "RelativePath": "imagens/1000100451#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "rs1bnv6wut",
-      "Integrity": "JW9M5w3PO0+gBbma4+o8MPICVAdlo6jkRnJTchMEMAI=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagens\\1000100451.jpg"
+      "OriginalItemSpec": "wwwroot\\imagens\\1000100184.jpg"
     },
     {
       "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100462.jpg",
@@ -73,19 +52,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "5ipweew5fc",
-      "Integrity": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "Fingerprint": "m65m7kne1m",
+      "Integrity": "QhUd2h2/5WCEbnmiVcm2Q7SSfAIMY4m/DibqLByhTjY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagens\\1000100462.jpg"
     },
     {
-      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
+      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100597.jpg",
       "SourceId": "APIVoiture",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
       "BasePath": "_content/APIVoiture",
-      "RelativePath": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909#[.{fingerprint}]?.jpg",
+      "RelativePath": "imagens/1000100597#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -94,17 +73,80 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "5ipweew5fc",
-      "Integrity": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "Fingerprint": "av263ombab",
+      "Integrity": "BrfuIb4doBpRVoDDxw9fjqYtPr6HhtwPdi4hNdrCEKY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg"
+      "OriginalItemSpec": "wwwroot\\imagens\\1000100597.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100866.jpg",
+      "SourceId": "APIVoiture",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
+      "BasePath": "_content/APIVoiture",
+      "RelativePath": "imagens/1000100866#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lvzb152j6h",
+      "Integrity": "YT/OiHm65rRQ5DOiPt+bFY77aEkA4a0mnVmM0nbp65s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagens\\1000100866.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000101071.jpg",
+      "SourceId": "APIVoiture",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
+      "BasePath": "_content/APIVoiture",
+      "RelativePath": "imagens/1000101071#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "wp44wjdzkf",
+      "Integrity": "5MyH0RRK0ioyy3dWvo36bMjFDlk0aCS+7IENYQDgt9k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagens\\1000101071.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg",
+      "SourceId": "APIVoiture",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\",
+      "BasePath": "_content/APIVoiture",
+      "RelativePath": "imagens/d8c86777-f776-4245-b41f-b581dbe0403b_1000101474#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "pzstk8xgux",
+      "Integrity": "BfyRzEQLDyN2NRkhkhY1ZJjM/EAoUPFSo4Pm+Fe3nI0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagens\\d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg"
     }
   ],
   "Endpoints": [
     {
-      "Route": "imagens/1000100304.5ipweew5fc.jpg",
-      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100304.jpg",
+      "Route": "imagens/1000100184.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100184.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -113,7 +155,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "0"
+          "Value": "88319"
         },
         {
           "Name": "Content-Type",
@@ -121,56 +163,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+          "Value": "\"1bHSK7RZ5rgemzE1Tbsc6flY1kixyi2QIsvCMhGYaDg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 06:43:04 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "5ipweew5fc"
-        },
-        {
-          "Name": "label",
-          "Value": "imagens/1000100304.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
-        }
-      ]
-    },
-    {
-      "Route": "imagens/1000100304.jpg",
-      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100304.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "0"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 06:43:04 GMT"
+          "Value": "Tue, 13 May 2025 23:53:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -180,13 +177,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+          "Value": "sha256-1bHSK7RZ5rgemzE1Tbsc6flY1kixyi2QIsvCMhGYaDg="
         }
       ]
     },
     {
-      "Route": "imagens/1000100451.jpg",
-      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100451.jpg",
+      "Route": "imagens/1000100184.lclnemchqs.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100184.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -195,7 +192,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "103865"
+          "Value": "88319"
         },
         {
           "Name": "Content-Type",
@@ -203,48 +200,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JW9M5w3PO0+gBbma4+o8MPICVAdlo6jkRnJTchMEMAI=\""
+          "Value": "\"1bHSK7RZ5rgemzE1Tbsc6flY1kixyi2QIsvCMhGYaDg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 19:32:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-JW9M5w3PO0+gBbma4+o8MPICVAdlo6jkRnJTchMEMAI="
-        }
-      ]
-    },
-    {
-      "Route": "imagens/1000100451.rs1bnv6wut.jpg",
-      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100451.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "103865"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"JW9M5w3PO0+gBbma4+o8MPICVAdlo6jkRnJTchMEMAI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 19:32:58 GMT"
+          "Value": "Tue, 13 May 2025 23:53:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -254,60 +214,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rs1bnv6wut"
+          "Value": "lclnemchqs"
         },
         {
           "Name": "label",
-          "Value": "imagens/1000100451.jpg"
+          "Value": "imagens/1000100184.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-JW9M5w3PO0+gBbma4+o8MPICVAdlo6jkRnJTchMEMAI="
-        }
-      ]
-    },
-    {
-      "Route": "imagens/1000100462.5ipweew5fc.jpg",
-      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100462.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "0"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 19:22:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "5ipweew5fc"
-        },
-        {
-          "Name": "label",
-          "Value": "imagens/1000100462.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+          "Value": "sha256-1bHSK7RZ5rgemzE1Tbsc6flY1kixyi2QIsvCMhGYaDg="
         }
       ]
     },
@@ -322,7 +237,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "0"
+          "Value": "94729"
         },
         {
           "Name": "Content-Type",
@@ -330,11 +245,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+          "Value": "\"QhUd2h2/5WCEbnmiVcm2Q7SSfAIMY4m/DibqLByhTjY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 19:22:52 GMT"
+          "Value": "Wed, 07 May 2025 20:54:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -344,13 +259,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+          "Value": "sha256-QhUd2h2/5WCEbnmiVcm2Q7SSfAIMY4m/DibqLByhTjY="
         }
       ]
     },
     {
-      "Route": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.5ipweew5fc.jpg",
-      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
+      "Route": "imagens/1000100462.m65m7kne1m.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100462.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -359,7 +274,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "0"
+          "Value": "94729"
         },
         {
           "Name": "Content-Type",
@@ -367,11 +282,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+          "Value": "\"QhUd2h2/5WCEbnmiVcm2Q7SSfAIMY4m/DibqLByhTjY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 06:40:13 GMT"
+          "Value": "Wed, 07 May 2025 20:54:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -381,21 +296,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5ipweew5fc"
+          "Value": "m65m7kne1m"
         },
         {
           "Name": "label",
-          "Value": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg"
+          "Value": "imagens/1000100462.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+          "Value": "sha256-QhUd2h2/5WCEbnmiVcm2Q7SSfAIMY4m/DibqLByhTjY="
         }
       ]
     },
     {
-      "Route": "imagens/49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
-      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
+      "Route": "imagens/1000100597.av263ombab.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100597.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -404,7 +319,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "0"
+          "Value": "75214"
         },
         {
           "Name": "Content-Type",
@@ -412,11 +327,56 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+          "Value": "\"BrfuIb4doBpRVoDDxw9fjqYtPr6HhtwPdi4hNdrCEKY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 06:40:13 GMT"
+          "Value": "Tue, 13 May 2025 23:52:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "av263ombab"
+        },
+        {
+          "Name": "label",
+          "Value": "imagens/1000100597.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BrfuIb4doBpRVoDDxw9fjqYtPr6HhtwPdi4hNdrCEKY="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/1000100597.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100597.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "75214"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BrfuIb4doBpRVoDDxw9fjqYtPr6HhtwPdi4hNdrCEKY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 23:52:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -426,7 +386,253 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+          "Value": "sha256-BrfuIb4doBpRVoDDxw9fjqYtPr6HhtwPdi4hNdrCEKY="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/1000100866.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100866.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "50504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YT/OiHm65rRQ5DOiPt+bFY77aEkA4a0mnVmM0nbp65s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 22:13:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YT/OiHm65rRQ5DOiPt+bFY77aEkA4a0mnVmM0nbp65s="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/1000100866.lvzb152j6h.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100866.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "50504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YT/OiHm65rRQ5DOiPt+bFY77aEkA4a0mnVmM0nbp65s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 22:13:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lvzb152j6h"
+        },
+        {
+          "Name": "label",
+          "Value": "imagens/1000100866.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YT/OiHm65rRQ5DOiPt+bFY77aEkA4a0mnVmM0nbp65s="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/1000101071.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000101071.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1122569"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5MyH0RRK0ioyy3dWvo36bMjFDlk0aCS+7IENYQDgt9k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 22:08:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5MyH0RRK0ioyy3dWvo36bMjFDlk0aCS+7IENYQDgt9k="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/1000101071.wp44wjdzkf.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000101071.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1122569"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5MyH0RRK0ioyy3dWvo36bMjFDlk0aCS+7IENYQDgt9k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 22:08:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wp44wjdzkf"
+        },
+        {
+          "Name": "label",
+          "Value": "imagens/1000101071.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5MyH0RRK0ioyy3dWvo36bMjFDlk0aCS+7IENYQDgt9k="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1189329"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BfyRzEQLDyN2NRkhkhY1ZJjM/EAoUPFSo4Pm+Fe3nI0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 May 2025 02:04:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BfyRzEQLDyN2NRkhkhY1ZJjM/EAoUPFSo4Pm+Fe3nI0="
+        }
+      ]
+    },
+    {
+      "Route": "imagens/d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.pzstk8xgux.jpg",
+      "AssetFile": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1189329"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BfyRzEQLDyN2NRkhkhY1ZJjM/EAoUPFSo4Pm+Fe3nI0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 May 2025 02:04:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pzstk8xgux"
+        },
+        {
+          "Name": "label",
+          "Value": "imagens/d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BfyRzEQLDyN2NRkhkhY1ZJjM/EAoUPFSo4Pm+Fe3nI0="
         }
       ]
     }

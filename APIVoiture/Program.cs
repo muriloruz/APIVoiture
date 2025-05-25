@@ -9,11 +9,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Newtonsoft.Json;
 
 
 var builder = WebApplication.CreateBuilder(args);
-//var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
-//builder.WebHost.UseUrls($"http://*:{port}");
 
 
 
@@ -21,7 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
 
 
-// Configurar AutoMapper
+
 var mapperConfig = new MapperConfiguration(mc =>
 {
     mc.AddProfile(new VendedorProfile());
@@ -30,14 +29,20 @@ var mapperConfig = new MapperConfiguration(mc =>
     mc.AddProfile(new VendedorClienteProfile());
     mc.AddProfile(new PagamentoProfile());
     mc.AddProfile(new PecaProfile());
-    // Adicione outras profiles conforme necessário
+    mc.AddProfile(new FavoritoProfile());
+    
 });
 builder.Services.AddControllers();
 
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
-// Add services to the container.
+
+
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+    );
 
 builder.Services.AddDbContext<UsuarioContext>(opts =>
     opts.UseLazyLoadingProxies()
@@ -48,7 +53,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -63,7 +67,7 @@ builder.Services.AddAuthorization(opt =>
 
 });
 
-/*builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());*/
+
 
 builder.Services.AddCors(options =>
 {
@@ -99,7 +103,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -110,31 +113,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Usar CORS
  app.UseCors("AllowSpecificOrigin");
-
-// app.Use(async (context, next) =>
-// {
-//     context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
-//     await next();
-// });
-// app.Use(async (context, next) =>
-// {
-//     if (context.Request.Path.StartsWithSegments("/imagens"))
-//     {
-//         var filePath = Path.Combine(builder.Environment.ContentRootPath, "wwwroot", context.Request.Path.Value.Substring(1));
-//         Console.WriteLine($"Requisição para arquivo estático: {filePath}");
-//         if (File.Exists(filePath))
-//         {
-//             Console.WriteLine($"Arquivo encontrado.");
-//         }
-//         else
-//         {
-//             Console.WriteLine($"Arquivo NÃO encontrado.");
-//         }
-//     }
-//     await next();
-// });
+ 
 
 app.UseStaticFiles(new StaticFileOptions
 {

@@ -20,11 +20,6 @@ namespace APIVoiture.Services
             _signInManager = signInManager;
             _tokenService = tokenService;
         }
-
-
-
-
-
         public async Task Cadastra(CreateVendedorDto userDTO)
         {
             Vendedor usuario = _mapper.Map<Vendedor>(userDTO);
@@ -35,12 +30,6 @@ namespace APIVoiture.Services
                 {
                     throw new ApplicationException("Falha ao cadastrar!");
                 }
-
-            
-
-
-
-
         }
 
         public async Task<string> Login(AuthVendedor dto)
@@ -51,7 +40,7 @@ namespace APIVoiture.Services
                 var re = await _signInManager.PasswordSignInAsync(user.UserName, dto.Password, false, false);
                 if (!re.Succeeded)
                 {
-                    throw new ApplicationException("Deu ruim");
+                    throw new ApplicationException("Senha não encontrada");
                 }
                 var usuario = _signInManager.UserManager.Users.FirstOrDefault(x => x.NormalizedUserName == dto.UserName.ToUpper());
                 return _tokenService.GenerateTokenVendedor(usuario);
@@ -61,6 +50,28 @@ namespace APIVoiture.Services
             {
                 throw new ApplicationException("Email não encontrado");
             }
+        }
+        public async Task<IdentityResult> Recupera(string userId, string newPassword)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Falha na redefinição de senha." });
+            }
+
+            var removePasswordResult = await _userManager.RemovePasswordAsync(user);
+            if (!removePasswordResult.Succeeded)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Erro ao remover senha antiga." });
+            }
+
+            var addPasswordResult = await _userManager.AddPasswordAsync(user, newPassword);
+            if (!addPasswordResult.Succeeded)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Erro ao adicionar nova senha." });
+            }
+            await _signInManager.RefreshSignInAsync(user);
+            return IdentityResult.Success;
         }
     }
 }

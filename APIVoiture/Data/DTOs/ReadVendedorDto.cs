@@ -15,5 +15,6 @@ namespace APIVoiture.Data.DTOs
         public double avaliacao { get; set; }
         public int numDeAvaliacao { get; set; }
         public ReadEnderecoDto endereco { get; set; }
+        public ICollection<ReadPecaDto> pecas { get; set; }
     }
 }

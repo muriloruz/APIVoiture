@@ -1,20 +1,28 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100304.jpg",
-      "PackagePath": "staticwebassets\\imagens\\1000100304.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100451.jpg",
-      "PackagePath": "staticwebassets\\imagens\\1000100451.jpg"
+      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100184.jpg",
+      "PackagePath": "staticwebassets\\imagens\\1000100184.jpg"
     },
     {
       "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100462.jpg",
       "PackagePath": "staticwebassets\\imagens\\1000100462.jpg"
     },
     {
-      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg",
-      "PackagePath": "staticwebassets\\imagens\\49e71aa6-7f80-4cdb-ae18-568a01c8c822651142032737283909.jpg"
+      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100597.jpg",
+      "PackagePath": "staticwebassets\\imagens\\1000100597.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000100866.jpg",
+      "PackagePath": "staticwebassets\\imagens\\1000100866.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\1000101071.jpg",
+      "PackagePath": "staticwebassets\\imagens\\1000101071.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Murilo\\Desktop\\github\\APIVoiture\\APIVoiture\\wwwroot\\imagens\\d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg",
+      "PackagePath": "staticwebassets\\imagens\\d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.APIVoiture.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

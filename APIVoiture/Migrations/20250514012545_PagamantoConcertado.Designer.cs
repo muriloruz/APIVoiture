@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIVoiture.Migrations
 {
     [DbContext(typeof(UsuarioContext))]
-    [Migration("20250504223215_18")]
-    partial class _18
+    [Migration("20250514012545_PagamantoConcertado")]
+    partial class PagamantoConcertado
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,49 +116,27 @@ namespace APIVoiture.Migrations
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("APIVoiture.Models.ModeloCarro", b =>
+            modelBuilder.Entity("APIVoiture.Models.Favorito", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ano")
-                        .HasMaxLength(50)
+                    b.Property<int>("PecaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("cambio")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(255)");
 
-                    b.Property<string>("carroceria")
-                        .IsRequired()
-                        .HasMaxLength(35)
-                        .HasColumnType("varchar(35)");
+                    b.HasKey("Id");
 
-                    b.Property<string>("codProdOriginal")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                    b.HasIndex("UserId");
 
-                    b.Property<string>("modelo")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                    b.HasIndex("PecaId", "UserId")
+                        .IsUnique();
 
-                    b.Property<string>("produto")
-                        .IsRequired()
-                        .HasMaxLength(35)
-                        .HasColumnType("varchar(35)");
-
-                    b.Property<string>("valvulas")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ModeloCarros");
+                    b.ToTable("Favorito");
                 });
 
             modelBuilder.Entity("APIVoiture.Models.Pagamento", b =>
@@ -195,9 +173,6 @@ namespace APIVoiture.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("varchar(25)");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
@@ -211,9 +186,6 @@ namespace APIVoiture.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("ModeloCarroid")
                         .HasColumnType("int");
 
                     b.Property<string>("UsuarioId")
@@ -254,8 +226,6 @@ namespace APIVoiture.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ModeloCarroid");
-
                     b.HasIndex("UsuarioId");
 
                     b.HasIndex("VendedorId");
@@ -271,7 +241,12 @@ namespace APIVoiture.Migrations
                     b.Property<string>("UsuarioId")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int>("PecaId")
+                        .HasColumnType("int");
+
                     b.HasKey("VendedorId", "UsuarioId");
+
+                    b.HasIndex("PecaId");
 
                     b.HasIndex("UsuarioId");
 
@@ -461,6 +436,25 @@ namespace APIVoiture.Migrations
                     b.ToTable("Vendedores", (string)null);
                 });
 
+            modelBuilder.Entity("APIVoiture.Models.Favorito", b =>
+                {
+                    b.HasOne("APIVoiture.Models.Peca", "Peca")
+                        .WithMany("Favorito")
+                        .HasForeignKey("PecaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("APIVoiture.Models.Usuario", "User")
+                        .WithMany("Favorito")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Peca");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("APIVoiture.Models.Pagamento", b =>
                 {
                     b.HasOne("APIVoiture.Models.Usuario", "Cliente")
@@ -482,12 +476,6 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.Peca", b =>
                 {
-                    b.HasOne("APIVoiture.Models.ModeloCarro", "ModeloCarro")
-                        .WithMany("Pecas")
-                        .HasForeignKey("ModeloCarroid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("APIVoiture.Models.Usuario", "Usuario")
                         .WithMany("Pecas")
                         .HasForeignKey("UsuarioId");
@@ -498,8 +486,6 @@ namespace APIVoiture.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ModeloCarro");
-
                     b.Navigation("Usuario");
 
                     b.Navigation("Vendedor");
@@ -507,6 +493,12 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.VendedorCliente", b =>
                 {
+                    b.HasOne("APIVoiture.Models.Peca", "Peca")
+                        .WithMany("VendedorCliente")
+                        .HasForeignKey("PecaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("APIVoiture.Models.Usuario", "Usuario")
                         .WithMany("VendedorCliente")
                         .HasForeignKey("UsuarioId")
@@ -518,6 +510,8 @@ namespace APIVoiture.Migrations
                         .HasForeignKey("VendedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Peca");
 
                     b.Navigation("Usuario");
 
@@ -564,18 +558,19 @@ namespace APIVoiture.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("APIVoiture.Models.ModeloCarro", b =>
-                {
-                    b.Navigation("Pecas");
-                });
-
             modelBuilder.Entity("APIVoiture.Models.Peca", b =>
                 {
+                    b.Navigation("Favorito");
+
                     b.Navigation("Pagamento");
+
+                    b.Navigation("VendedorCliente");
                 });
 
             modelBuilder.Entity("APIVoiture.Models.Usuario", b =>
                 {
+                    b.Navigation("Favorito");
+
                     b.Navigation("Pagamentos");
 
                     b.Navigation("Pecas");

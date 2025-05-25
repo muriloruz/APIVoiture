@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APIVoiture.Migrations
 {
-    public partial class _18 : Migration
+    public partial class PagamantoConcertado : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -70,32 +70,6 @@ namespace APIVoiture.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Enderecos", x => x.id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "ModeloCarros",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    modelo = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ano = table.Column<int>(type: "int", maxLength: 50, nullable: false),
-                    valvulas = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    cambio = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    carroceria = table.Column<string>(type: "varchar(35)", maxLength: 35, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    produto = table.Column<string>(type: "varchar(35)", maxLength: 35, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    codProdOriginal = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ModeloCarros", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -296,7 +270,6 @@ namespace APIVoiture.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     garantia = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ModeloCarroid = table.Column<int>(type: "int", nullable: false),
                     VendedorId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UsuarioId = table.Column<string>(type: "varchar(255)", nullable: true)
@@ -305,12 +278,6 @@ namespace APIVoiture.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pecas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pecas_ModeloCarros_ModeloCarroid",
-                        column: x => x.ModeloCarroid,
-                        principalTable: "ModeloCarros",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Pecas_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
@@ -326,27 +293,28 @@ namespace APIVoiture.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "VendedorClientes",
+                name: "Favorito",
                 columns: table => new
                 {
-                    VendedorId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    UsuarioId = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PecaId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VendedorClientes", x => new { x.VendedorId, x.UsuarioId });
+                    table.PrimaryKey("PK_Favorito", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_VendedorClientes_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "Usuarios",
+                        name: "FK_Favorito_Pecas_PecaId",
+                        column: x => x.PecaId,
+                        principalTable: "Pecas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_VendedorClientes_Vendedores_VendedorId",
-                        column: x => x.VendedorId,
-                        principalTable: "Vendedores",
+                        name: "FK_Favorito_Usuarios_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Usuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -367,7 +335,6 @@ namespace APIVoiture.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PrecoPeca = table.Column<double>(type: "double", nullable: false),
                     PecaId = table.Column<int>(type: "int", nullable: false),
-                    UsuarioId = table.Column<int>(type: "int", nullable: false),
                     ClienteId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -389,11 +356,56 @@ namespace APIVoiture.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "VendedorClientes",
+                columns: table => new
+                {
+                    VendedorId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UsuarioId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PecaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VendedorClientes", x => new { x.VendedorId, x.UsuarioId });
+                    table.ForeignKey(
+                        name: "FK_VendedorClientes_Pecas_PecaId",
+                        column: x => x.PecaId,
+                        principalTable: "Pecas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_VendedorClientes_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_VendedorClientes_Vendedores_VendedorId",
+                        column: x => x.VendedorId,
+                        principalTable: "Vendedores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Enderecos_CEP",
                 table: "Enderecos",
                 column: "CEP",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Favorito_PecaId_UserId",
+                table: "Favorito",
+                columns: new[] { "PecaId", "UserId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Favorito_UserId",
+                table: "Favorito",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pagamento_ClienteId",
@@ -404,11 +416,6 @@ namespace APIVoiture.Migrations
                 name: "IX_Pagamento_PecaId",
                 table: "Pagamento",
                 column: "PecaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pecas_ModeloCarroid",
-                table: "Pecas",
-                column: "ModeloCarroid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pecas_UsuarioId",
@@ -432,6 +439,11 @@ namespace APIVoiture.Migrations
                 column: "EnderecoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_VendedorClientes_PecaId",
+                table: "VendedorClientes",
+                column: "PecaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VendedorClientes_UsuarioId",
                 table: "VendedorClientes",
                 column: "UsuarioId");
@@ -451,6 +463,9 @@ namespace APIVoiture.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Favorito");
+
             migrationBuilder.DropTable(
                 name: "Pagamento");
 
@@ -477,9 +492,6 @@ namespace APIVoiture.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pecas");
-
-            migrationBuilder.DropTable(
-                name: "ModeloCarros");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

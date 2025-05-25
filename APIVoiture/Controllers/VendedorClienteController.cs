@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace APIVoiture.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class VendedorClienteController : ControllerBase
     {
             private readonly UsuarioContext _context;
@@ -20,16 +20,15 @@ namespace APIVoiture.Controllers
                 _mapper = mapper;
             }
 
-            // GET api/vendedorcliente
             [HttpGet]
             public IEnumerable<VendedorClienteDTO> GetVendedorClientes()
             {
                 return _mapper.Map<List<VendedorClienteDTO>>(_context.VendedorClientes.ToList());
             }
-            [HttpGet("{usuarioId}/{vendedorId}")]
-            public IActionResult GetById(string usuarioId, string vendedorId)
+            [HttpGet("{usuarioId}")]
+            public IActionResult GetById(string usuarioId)
             {
-                VendedorCliente vc = _context.VendedorClientes.FirstOrDefault(vc => vc.UsuarioId == usuarioId && vc.VendedorId == vendedorId);
+                VendedorCliente vc = _context.VendedorClientes.FirstOrDefault(vc => vc.UsuarioId == usuarioId);
                 if (vc != null)
                 {
                     VendedorClienteDTO vcDTO = _mapper.Map<VendedorClienteDTO>(vc);
@@ -37,7 +36,7 @@ namespace APIVoiture.Controllers
                 }
                 return NotFound();
             }
-            // POST api/vendedorcliente
+            
             [HttpPost]
             public IActionResult CreateVendedorCliente(VendedorClienteDTO vendedorClienteDTO)
             {
@@ -47,19 +46,39 @@ namespace APIVoiture.Controllers
                 return CreatedAtAction(nameof(GetById), new { usuarioId = vc.UsuarioId, vc.VendedorId }, vc);
 
             }
-
-            // DELETE api/vendedorcliente/5
-            [HttpDelete("{id}")]
-            public async Task<ActionResult> DeleteVendedorCliente(int id)
+            [HttpGet("pecas/{nome}")]
+            public ActionResult<IEnumerable<object>> GetPeca(string nome)
             {
-                var vendedorCliente = await _context.VendedorClientes.FindAsync(id);
-                if (vendedorCliente == null)
-                {
+                var pecas = _context.VendedorClientes
+                    .Include(vc => vc.Peca)
+                    .Where(vc => vc.Peca.nomePeca.ToLower().Contains(nome.ToLower()))
+                    .Select(vc => vc.Peca)
+                    .Distinct()
+                    .ToList();
+
+                if (!pecas.Any())
                     return NotFound();
-                }
-                _context.VendedorClientes.Remove(vendedorCliente);
-                await _context.SaveChangesAsync();
-                return NoContent();
+
+                var pecasDto = _mapper.Map<IEnumerable<ReadPecaDto>>(pecas);
+
+                var resposta = pecasDto.Select(p => new {
+                    peca = p
+                });
+
+                return Ok(resposta);
             }
-        }
+
+            [HttpDelete("{id}")]
+                public async Task<ActionResult> DeleteVendedorCliente(int id)
+                {
+                    var vendedorCliente = await _context.VendedorClientes.FindAsync(id);
+                    if (vendedorCliente == null)
+                    {
+                        return NotFound();
+                    }
+                    _context.VendedorClientes.Remove(vendedorCliente);
+                    await _context.SaveChangesAsync();
+                    return NoContent();
+                }
+            }
     }

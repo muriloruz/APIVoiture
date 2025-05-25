@@ -178,6 +178,85 @@
         }
       }
     },
+    "/Favorito": {
+      "post": {
+        "tags": [
+          "Favorito"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoritoDTO"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoritoDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoritoDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoritoDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Favorito/{id}": {
+      "get": {
+        "tags": [
+          "Favorito"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Favorito"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Pagamento": {
       "get": {
         "tags": [
@@ -559,7 +638,7 @@
         }
       }
     },
-    "/{id}": {
+    "/Peca/{id}": {
       "patch": {
         "tags": [
           "Peca"
@@ -577,35 +656,63 @@
         ],
         "requestBody": {
           "content": {
-            "application/json-patch+json": {
+            "multipart/form-data": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
+                "type": "object",
+                "properties": {
+                  "NomePeca": {
+                    "type": "string"
+                  },
+                  "Descricao": {
+                    "type": "string"
+                  },
+                  "Garantia": {
+                    "type": "string"
+                  },
+                  "Fabricante": {
+                    "type": "string"
+                  },
+                  "Qntd": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Preco": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "VendedorId": {
+                    "type": "string"
+                  },
+                  "Imagem": {
+                    "type": "string",
+                    "format": "binary"
+                  }
                 }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
+              },
+              "encoding": {
+                "NomePeca": {
+                  "style": "form"
+                },
+                "Descricao": {
+                  "style": "form"
+                },
+                "Garantia": {
+                  "style": "form"
+                },
+                "Fabricante": {
+                  "style": "form"
+                },
+                "Qntd": {
+                  "style": "form"
+                },
+                "Preco": {
+                  "style": "form"
+                },
+                "VendedorId": {
+                  "style": "form"
+                },
+                "Imagem": {
+                  "style": "form"
                 }
               }
             }
@@ -617,29 +724,6 @@
           }
         }
       },
-      "delete": {
-        "tags": [
-          "Peca"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/Peca/{id}": {
       "get": {
         "tags": [
           "Peca"
@@ -675,6 +759,50 @@
                 }
               }
             }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Peca"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Peca/apagar/{id}": {
+      "delete": {
+        "tags": [
+          "Peca"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
@@ -752,6 +880,64 @@
       }
     },
     "/Usuario/getRole/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Usuario/verEmail": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Usuario/users/{id}": {
       "get": {
         "tags": [
           "Usuario"
@@ -1013,6 +1199,52 @@
         }
       }
     },
+    "/Usuario/password/{id}": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Vendedor": {
       "post": {
         "tags": [
@@ -1143,6 +1375,42 @@
         }
       }
     },
+    "/Vendedor/verEmail": {
+      "post": {
+        "tags": [
+          "Vendedor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoEmailCNPJ"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Vendedor/getRole/{id}": {
       "get": {
         "tags": [
@@ -1230,6 +1498,62 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "Vendedor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Vendedor"
@@ -1251,7 +1575,53 @@
         }
       }
     },
-    "/api/VendedorCliente": {
+    "/Vendedor/password/{id}": {
+      "post": {
+        "tags": [
+          "Vendedor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/VendedorCliente": {
       "get": {
         "tags": [
           "VendedorCliente"
@@ -1323,7 +1693,7 @@
         }
       }
     },
-    "/api/VendedorCliente/{usuarioId}/{vendedorId}": {
+    "/VendedorCliente/{usuarioId}": {
       "get": {
         "tags": [
           "VendedorCliente"
@@ -1331,14 +1701,6 @@
         "parameters": [
           {
             "name": "usuarioId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "vendedorId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1353,7 +1715,49 @@
         }
       }
     },
-    "/api/VendedorCliente/{id}": {
+    "/VendedorCliente/pecas/{nome}": {
+      "get": {
+        "tags": [
+          "VendedorCliente"
+        ],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VendedorCliente/{id}": {
       "delete": {
         "tags": [
           "VendedorCliente"
@@ -1415,6 +1819,20 @@
         },
         "additionalProperties": false
       },
+      "ChangePasswordRequest": {
+        "type": "object",
+        "properties": {
+          "newPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmNewPassword": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateEnderecoDto": {
         "required": [
           "bairro",
@@ -1455,13 +1873,13 @@
       },
       "CreatePagamentoDto": {
         "required": [
+          "clienteId",
           "dataHora",
           "metodoPagamento",
           "pecaId",
           "precoPeca",
           "status",
-          "tipoPagamento",
-          "usuarioId"
+          "tipoPagamento"
         ],
         "type": "object",
         "properties": {
@@ -1492,7 +1910,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "usuarioId": {
+          "clienteId": {
             "minLength": 1,
             "type": "string"
           }
@@ -1528,6 +1946,10 @@
             "minLength": 1,
             "type": "string",
             "format": "email"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
           },
           "password": {
             "minLength": 6,
@@ -1613,6 +2035,34 @@
           "enderecoId": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DtoEmailCNPJ": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnpj": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FavoritoDTO": {
+        "type": "object",
+        "properties": {
+          "pecaId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -1721,8 +2171,8 @@
             "format": "int32"
           },
           "clienteId": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1762,32 +2212,27 @@
             "type": "string",
             "nullable": true
           },
-          "vendedorAvaliacao": {
-            "type": "number",
-            "format": "double"
-          },
-          "modeloCarroValvulas": {
+          "vendedorNome": {
             "type": "string",
             "nullable": true
           },
-          "modeloCarroAno": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "modeloCarroModelo": {
+          "vendedorEmail": {
             "type": "string",
             "nullable": true
           },
-          "modeloCarroMarca": {
-            "type": "string",
-            "nullable": true
-          },
-          "modeloCarroCambio": {
+          "vendedorTelefone": {
             "type": "string",
             "nullable": true
           },
           "pagamentoStatus": {
             "type": "string",
+            "nullable": true
+          },
+          "favoritoDTOs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoritoDTO"
+            },
             "nullable": true
           }
         },
@@ -1801,6 +2246,10 @@
             "nullable": true
           },
           "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
             "type": "string",
             "nullable": true
           },
@@ -1820,11 +2269,7 @@
             "type": "string",
             "nullable": true
           },
-          "sexo": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
+          "userName": {
             "type": "string",
             "nullable": true
           },
@@ -1837,11 +2282,7 @@
             "format": "int64"
           },
           "endereco": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ReadEnderecoDto"
-            },
-            "nullable": true
+            "$ref": "#/components/schemas/ReadEnderecoDto"
           },
           "horaDaConsulta": {
             "type": "string",
@@ -1891,6 +2332,13 @@
           },
           "endereco": {
             "$ref": "#/components/schemas/ReadEnderecoDto"
+          },
+          "pecas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReadPecaDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1975,24 +2423,26 @@
         "type": "object",
         "properties": {
           "userName": {
-            "maxLength": 70,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "cpf": {
-            "maxLength": 11,
-            "minLength": 11,
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
             "type": "string",
             "nullable": true
           },
           "email": {
             "type": "string",
-            "format": "email",
+            "nullable": true
+          },
+          "nome": {
+            "type": "string",
             "nullable": true
           },
           "password": {
-            "minLength": 6,
             "type": "string",
             "nullable": true
           },
@@ -2015,15 +2465,19 @@
       "UpdateVendedorDto": {
         "required": [
           "cnpj",
-          "nomeVendedor",
+          "nome",
           "numCasa"
         ],
         "type": "object",
         "properties": {
-          "nomeVendedor": {
+          "nome": {
             "maxLength": 70,
             "minLength": 0,
             "type": "string"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
           },
           "cnpj": {
             "maxLength": 14,
@@ -2049,6 +2503,11 @@
           "complemento": {
             "type": "string",
             "nullable": true
+          },
+          "enderecoId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2060,9 +2519,22 @@
             "type": "string",
             "nullable": true
           },
+          "pecaId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "usuarioId": {
             "type": "string",
             "nullable": true
+          },
+          "vendedor": {
+            "$ref": "#/components/schemas/ReadVendedorDto"
+          },
+          "peca": {
+            "$ref": "#/components/schemas/ReadPecaDto"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/ReadUsuarioDto"
           }
         },
         "additionalProperties": false

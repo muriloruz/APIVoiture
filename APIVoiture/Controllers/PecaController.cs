@@ -14,11 +14,13 @@ public class PecaController : ControllerBase
 {
     private UsuarioContext _context;
     private IMapper _mapper;
+    private readonly IWebHostEnvironment _env;
 
-    public PecaController(UsuarioContext context, IMapper mapper)
+    public PecaController(UsuarioContext context, IMapper mapper, IWebHostEnvironment env)
     {
         _context = context;
         _mapper = mapper;
+        _env = env;
     }
     [HttpPost]
     
@@ -56,22 +58,46 @@ public class PecaController : ControllerBase
             return NotFound();
         return Ok(_mapper.Map<IEnumerable<ReadPecaDto>>(pecas));
     }
-    [HttpPatch("/{id}")]
-    [Authorize(Policy = "VendedorPolicy")]
-    public IActionResult updatePecaPatch(int id, JsonPatchDocument<UpdatePecaDto> patch)
+    [HttpPatch("{id}")]
+    public IActionResult UpdatePeca([FromForm] UpdatePecaDto updatePecaDto, int id)
     {
-        var peca = _context.Pecas.FirstOrDefault(peca => peca.Id == id);
-        if (peca == null) return NotFound();
+        var pecaExistente = _context.Pecas.FirstOrDefault(peca => peca.Id == id);
+        if (pecaExistente == null) return NotFound();
 
-        var pecaParaAtualizar = _mapper.Map<UpdatePecaDto>(peca);
+        pecaExistente.nomePeca = updatePecaDto.NomePeca;
+        pecaExistente.descricao = updatePecaDto.Descricao;
+        pecaExistente.garantia = updatePecaDto.Garantia;
+        pecaExistente.fabricante = updatePecaDto.Fabricante;
+        pecaExistente.qntd = updatePecaDto.Qntd.Value;
+        pecaExistente.preco = updatePecaDto.Preco.Value;
 
-        patch.ApplyTo(pecaParaAtualizar, ModelState);
-        if (!TryValidateModel(pecaParaAtualizar))
+        if (updatePecaDto.Imagem != null && updatePecaDto.Imagem.Length > 0)
         {
-            return ValidationProblem(ModelState);
+            if (!string.IsNullOrEmpty(pecaExistente.imagem))
+            {
+                var oldImagePath = Path.Combine(_env.WebRootPath, "imagens", pecaExistente.imagem);
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
+
+            var uploadsFolder = Path.Combine(_env.WebRootPath, "imagens");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + updatePecaDto.Imagem.FileName;
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                updatePecaDto.Imagem.CopyTo(fileStream);
+            }
+            pecaExistente.imagem = uniqueFileName;
         }
 
-        _mapper.Map(pecaParaAtualizar, peca);
+        _context.Pecas.Update(pecaExistente);
         _context.SaveChanges();
         return NoContent();
     }
@@ -85,11 +111,25 @@ public class PecaController : ControllerBase
         }
         return Ok(_mapper.Map<ReadPecaDto>(peca));
     }
-    [HttpDelete("/{id}")]
-    [Authorize(Policy = "VendedorPolicy")]
-    public ActionResult DeletePeca(int id) { 
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeletePeca(int id) { 
         var p = _context.Pecas.FirstOrDefault(peca => peca.Id == id);
         if(p==null) return NotFound();
+        if (p.qntd > 1)
+        {
+            p.qntd -= 1;
+            await _context.SaveChangesAsync();
+            return Ok(p);
+        }
+        _context.Pecas.Remove(p);
+        _context.SaveChanges();
+        return NoContent();
+    }
+    [HttpDelete("apagar/{id:int}")]
+    public async Task<IActionResult> ApagarPeca(int id)
+    {
+        var p = _context.Pecas.FirstOrDefault(peca => peca.Id == id);
+        if (p == null) return NotFound();
         _context.Pecas.Remove(p);
         _context.SaveChanges();
         return NoContent();

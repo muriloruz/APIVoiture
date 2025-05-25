@@ -25,8 +25,12 @@ public class UsuarioContext : IdentityDbContext<ApplicationUser>
     public DbSet<VendedorCliente> VendedorClientes { get; set; }
     public DbSet<Pagamento> Pagamento { get; set; }
     public DbSet<Peca> Pecas { get; set; }
+    public DbSet<Favorito> Favorito { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Favorito>()
+            .HasKey(f => f.Id);
+
         modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
         {
             entity.HasKey(l => new { l.LoginProvider, l.ProviderKey });
@@ -58,8 +62,6 @@ public class UsuarioContext : IdentityDbContext<ApplicationUser>
                 .HasIndex(u => u.CEP)
                 .IsUnique();
         
-        modelBuilder.Entity<VendedorCliente>()
-            .HasKey(vc => new { vc.VendedorId, vc.UsuarioId });
 
         modelBuilder.Entity<VendedorCliente>()
             .HasOne(vc => vc.Vendedor)
@@ -70,6 +72,25 @@ public class UsuarioContext : IdentityDbContext<ApplicationUser>
             .HasOne(vc => vc.Usuario)
             .WithMany(c => c.VendedorCliente)
             .HasForeignKey(vc => vc.UsuarioId);
+
+        modelBuilder.Entity<VendedorCliente>()
+            .HasOne(vc => vc.Peca)
+            .WithMany(p => p.VendedorCliente)
+            .HasForeignKey(vc => vc.PecaId);
+
+        modelBuilder.Entity<Favorito>()
+            .HasIndex(f => new { f.PecaId, f.UserId})
+            .IsUnique();
+
+        modelBuilder.Entity<Favorito>()
+            .HasOne(h => h.Peca)
+            .WithMany(h => h.Favorito)
+            .HasForeignKey(h => h.PecaId);
+
+        modelBuilder.Entity<Favorito>()
+            .HasOne(h => h.User)
+            .WithMany(h => h.Favorito)
+            .HasForeignKey(h => h.UserId);
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

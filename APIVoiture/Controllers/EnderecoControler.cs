@@ -1,4 +1,4 @@
-﻿using APIVoiture.Data;
+﻿    using APIVoiture.Data;
 using APIVoiture.Data.DTOs;
 using APIVoiture.Models;
 using AutoMapper;
@@ -23,7 +23,7 @@ namespace APIVoiture.Controllers
 
 
         [HttpPost]
-        public IActionResult AdicionaCinema([FromBody] CreateEnderecoDto enderecoDto)
+        public IActionResult AdicionaEndereco([FromBody] CreateEnderecoDto enderecoDto)
         {
             Endereco endereco = _mapper.Map<Endereco>(enderecoDto);
             Endereco endere = _context.Enderecos.FirstOrDefault(x => x.CEP == enderecoDto.CEP);
@@ -37,13 +37,13 @@ namespace APIVoiture.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ReadEnderecoDto> RecuperaCinemas()
+        public IEnumerable<ReadEnderecoDto> RecuperaEndereco()
         {
             return _mapper.Map<List<ReadEnderecoDto>>(_context.Enderecos.ToList());
         }
 
         [HttpGet("{id}")]
-        public IActionResult RecuperaCinemasPorId(int id)
+        public IActionResult RecuperaEnderecoPorId(int id)
         {
             Endereco cinema = _context.Enderecos.FirstOrDefault(cinema => cinema.id == id);
             if (cinema != null)
@@ -55,7 +55,7 @@ namespace APIVoiture.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizaCinema(int id, [FromBody] UpdateEnderecoDto cinemaDto)
+        public IActionResult AtualizaEndereco(int id, [FromBody] UpdateEnderecoDto cinemaDto)
         {
             Endereco cinema = _context.Enderecos.FirstOrDefault(cinema => cinema.id == id);
             if (cinema == null)
@@ -69,7 +69,7 @@ namespace APIVoiture.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult DeletaCinema(int id)
+        public IActionResult DeletaEndereco(int id)
         {
             Endereco cinema = _context.Enderecos.FirstOrDefault(cinema => cinema.id == id);
             if (cinema == null)

@@ -58,4 +58,8 @@ public class Peca
 
     public virtual ICollection<Pagamento> Pagamento { get; set; }
 
+    public virtual ICollection<VendedorCliente> VendedorCliente { get; set; }
+
+    public virtual ICollection<Favorito> Favorito { get; set; }
+
 }

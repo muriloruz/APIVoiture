@@ -31,7 +31,7 @@ namespace APIVoiture.Models
         public virtual Peca Peca { get; set; }
 
         [Required]
-        public int UsuarioId { get; set; }
+        public string ClienteId { get; set; }
         public virtual Usuario Cliente { get; set; }
 
     }

@@ -13,12 +13,10 @@ namespace APIVoiture.Data.DTOs
         public int qntd { get; set; }
         public string fabricante { get; set; }
         public string garantia { get; set; }
-        public double VendedorAvaliacao { get; set; }
-        public string ModeloCarroValvulas { get; set; }
-        public int ModeloCarroAno { get; set; }
-        public string ModeloCarroModelo { get; set; }
-        public string ModeloCarroMarca { get; set; }
-        public string ModeloCarroCambio { get; set; }
+        public string VendedorNome { get; set; }
+        public string VendedorEmail { get; set; }
+        public string VendedorTelefone { get; set; }
         public string PagamentoStatus { get; set; }
+        public ICollection<FavoritoDTO> favoritoDTOs { get; set; } 
     }
 }

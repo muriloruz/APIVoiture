@@ -58,7 +58,28 @@ public class UsuarioServices
             throw new ApplicationException("Email não encontrado");
         }
     }
+    public async Task<IdentityResult> Recupera(string userId, string newPassword)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return IdentityResult.Failed(new IdentityError { Description = "Falha na redefinição de senha." });
+        }
 
+        var removePasswordResult = await _userManager.RemovePasswordAsync(user);
+        if (!removePasswordResult.Succeeded)
+        {
+            return IdentityResult.Failed(new IdentityError { Description = "Erro ao remover senha antiga." });
+        }
+
+        var addPasswordResult = await _userManager.AddPasswordAsync(user, newPassword);
+        if (!addPasswordResult.Succeeded)
+        {
+            return IdentityResult.Failed(new IdentityError { Description = "Erro ao adicionar nova senha." });
+        }
+        await _signInManager.RefreshSignInAsync(user);
+        return IdentityResult.Success;
+    }
 
 
 
