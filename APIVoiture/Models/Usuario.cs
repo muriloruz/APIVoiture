@@ -22,7 +22,7 @@ public class Usuario : ApplicationUser
     public string? unidade { get; set; }
 
     public virtual ICollection<Peca> Pecas { get; set; }
-    public virtual ICollection<VendedorCliente> VendedorCliente { get; set; } //n:n
+    public virtual ICollection<VendedorCliente> VendedorCliente { get; set; } 
     public virtual ICollection<Pagamento> Pagamentos { get; set; }
     public virtual ICollection<Favorito> Favorito { get; set; }
 

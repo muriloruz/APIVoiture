@@ -31,9 +31,9 @@ public class Vendedor : ApplicationUser
 
     public virtual ICollection<Peca> Pecas { get; set; }
 
-    public virtual ICollection<VendedorCliente> VendedorCliente { get; set; } //n:n
+    public virtual ICollection<VendedorCliente> VendedorCliente { get; set; } 
 
-    public int EnderecoId { set; get; } //1 : 1
+    public int EnderecoId { set; get; } 
     public virtual Endereco Endereco { get; set; }
 
     public Vendedor() : base()

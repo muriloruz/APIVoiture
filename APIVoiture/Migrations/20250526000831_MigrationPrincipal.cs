@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APIVoiture.Migrations
 {
-    public partial class PagamantoConcertado : Migration
+    public partial class MigrationPrincipal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -360,6 +360,8 @@ namespace APIVoiture.Migrations
                 name: "VendedorClientes",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     VendedorId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UsuarioId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -368,7 +370,7 @@ namespace APIVoiture.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VendedorClientes", x => new { x.VendedorId, x.UsuarioId });
+                    table.PrimaryKey("PK_VendedorClientes", x => x.Id);
                     table.ForeignKey(
                         name: "FK_VendedorClientes_Pecas_PecaId",
                         column: x => x.PecaId,
@@ -447,6 +449,11 @@ namespace APIVoiture.Migrations
                 name: "IX_VendedorClientes_UsuarioId",
                 table: "VendedorClientes",
                 column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VendedorClientes_VendedorId",
+                table: "VendedorClientes",
+                column: "VendedorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vendedores_cnpj",

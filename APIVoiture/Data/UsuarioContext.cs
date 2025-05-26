@@ -61,7 +61,9 @@ public class UsuarioContext : IdentityDbContext<ApplicationUser>
         modelBuilder.Entity<Endereco>()
                 .HasIndex(u => u.CEP)
                 .IsUnique();
-        
+
+        modelBuilder.Entity<VendedorCliente>()
+       .HasKey(vc => vc.Id);
 
         modelBuilder.Entity<VendedorCliente>()
             .HasOne(vc => vc.Vendedor)

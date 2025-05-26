@@ -11,7 +11,7 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.EnderecoController",
-    "Method": "AdicionaCinema",
+    "Method": "AdicionaEndereco",
     "RelativePath": "Endereco",
     "HttpMethod": "POST",
     "IsController": true,
@@ -27,7 +27,7 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.EnderecoController",
-    "Method": "RecuperaCinemas",
+    "Method": "RecuperaEndereco",
     "RelativePath": "Endereco",
     "HttpMethod": "GET",
     "IsController": true,
@@ -47,7 +47,7 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.EnderecoController",
-    "Method": "RecuperaCinemasPorId",
+    "Method": "RecuperaEnderecoPorId",
     "RelativePath": "Endereco/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -63,7 +63,7 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.EnderecoController",
-    "Method": "AtualizaCinema",
+    "Method": "AtualizaEndereco",
     "RelativePath": "Endereco/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -84,7 +84,7 @@
   },
   {
     "ContainingType": "APIVoiture.Controllers.EnderecoController",
-    "Method": "DeletaCinema",
+    "Method": "DeletaEndereco",
     "RelativePath": "Endereco/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,

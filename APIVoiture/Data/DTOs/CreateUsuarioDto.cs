@@ -16,7 +16,7 @@ public class CreateUsuarioDto
     [Required(ErrorMessage = "O campo Email é obrigatório.")]
     [EmailAddress(ErrorMessage = "O Email não é válido.")]
     public string Email { get; set; }
-    public string PhoneNumber { get; set; }
+    public string? PhoneNumber { get; set; }
     [Required(ErrorMessage = "O campo Senha é obrigatório.")]
     [MinLength(6, ErrorMessage = "A Senha deve ter pelo menos 6 caracteres.")]
     [DataType(DataType.Password)]

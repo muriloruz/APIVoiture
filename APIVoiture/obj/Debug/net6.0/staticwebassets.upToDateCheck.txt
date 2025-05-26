@@ -1,6 +1,2 @@
-wwwroot\imagens\1000100184.jpg
-wwwroot\imagens\1000100462.jpg
-wwwroot\imagens\1000100597.jpg
-wwwroot\imagens\1000100866.jpg
-wwwroot\imagens\1000101071.jpg
-wwwroot\imagens\d8c86777-f776-4245-b41f-b581dbe0403b_1000101474.jpg
+wwwroot\imagens\1000100060.jpg
+wwwroot\imagens\1000101471.jpg

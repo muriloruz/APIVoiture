@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIVoiture.Migrations
 {
     [DbContext(typeof(UsuarioContext))]
-    [Migration("20250518201722_idHistorico")]
-    partial class idHistorico
+    [Migration("20250526000831_MigrationPrincipal")]
+    partial class MigrationPrincipal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -235,23 +235,28 @@ namespace APIVoiture.Migrations
 
             modelBuilder.Entity("APIVoiture.Models.VendedorCliente", b =>
                 {
-                    b.Property<string>("VendedorId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("UsuarioId")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("PecaId")
                         .HasColumnType("int");
 
-                    b.HasKey("VendedorId", "UsuarioId");
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("VendedorId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("PecaId");
 
                     b.HasIndex("UsuarioId");
+
+                    b.HasIndex("VendedorId");
 
                     b.ToTable("VendedorClientes");
                 });
