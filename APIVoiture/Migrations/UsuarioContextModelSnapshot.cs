@@ -108,8 +108,7 @@ namespace APIVoiture.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("CEP")
-                        .IsUnique();
+                    b.HasIndex("CEP");
 
                     b.ToTable("Enderecos");
                 });

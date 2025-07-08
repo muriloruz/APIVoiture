@@ -58,6 +58,8 @@ public class UsuarioServices
             throw new ApplicationException("Email não encontrado");
         }
     }
+
+
     public async Task<IdentityResult> Recupera(string userId, string newPassword)
     {
         var user = await _userManager.FindByIdAsync(userId);

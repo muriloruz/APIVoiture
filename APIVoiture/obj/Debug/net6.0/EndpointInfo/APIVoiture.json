@@ -2464,7 +2464,7 @@
       },
       "UpdateVendedorDto": {
         "required": [
-          "cnpj",
+          "email",
           "nome",
           "numCasa"
         ],
@@ -2479,10 +2479,14 @@
             "type": "string",
             "nullable": true
           },
-          "cnpj": {
+          "email": {
             "maxLength": 14,
             "minLength": 14,
             "type": "string"
+          },
+          "cnpj": {
+            "type": "string",
+            "nullable": true
           },
           "telefoneVend": {
             "type": "string",

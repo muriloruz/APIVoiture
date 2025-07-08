@@ -23,7 +23,7 @@ namespace APIVoiture.Services
         public async Task Cadastra(CreateVendedorDto userDTO)
         {
             Vendedor usuario = _mapper.Map<Vendedor>(userDTO);
-            
+                
                 var re = await _userManager.CreateAsync(usuario, userDTO.Password);
                 await _userManager.AddToRoleAsync(usuario, "VENDEDOR");
                 if (!re.Succeeded)
@@ -35,6 +35,7 @@ namespace APIVoiture.Services
         public async Task<string> Login(AuthVendedor dto)
         {
             ApplicationUser user = await _userManager.FindByEmailAsync(dto.UserName);
+            
             if (user != null)
             {
                 var re = await _signInManager.PasswordSignInAsync(user.UserName, dto.Password, false, false);

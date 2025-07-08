@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIVoiture.Migrations
 {
     [DbContext(typeof(UsuarioContext))]
-    [Migration("20250526000831_MigrationPrincipal")]
-    partial class MigrationPrincipal
+    [Migration("20250703032809_RemoveUniqueEnderecoId")]
+    partial class RemoveUniqueEnderecoId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -110,8 +110,7 @@ namespace APIVoiture.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("CEP")
-                        .IsUnique();
+                    b.HasIndex("CEP");
 
                     b.ToTable("Enderecos");
                 });

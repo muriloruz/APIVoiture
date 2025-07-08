@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APIVoiture.Migrations
 {
-    public partial class MigrationPrincipal : Migration
+    public partial class RemoveUniqueEnderecoId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -395,8 +395,7 @@ namespace APIVoiture.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Enderecos_CEP",
                 table: "Enderecos",
-                column: "CEP",
-                unique: true);
+                column: "CEP");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Favorito_PecaId_UserId",

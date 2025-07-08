@@ -32,8 +32,12 @@ namespace APIVoiture.Controllers
         [HttpPost]
         public async Task<IActionResult> AdicionaVendedor(CreateVendedorDto vendedorDto)
         {
-            await _vendedorService.Cadastra(vendedorDto);
-            return Ok("Cadastrado!");
+            var user = _context.Vendedor.FirstOrDefault(x => x.cnpj == vendedorDto.cnpj);
+            if (user == null) {
+                await _vendedorService.Cadastra(vendedorDto);
+                return Ok("Cadastrado!");
+            }
+            return ValidationProblem("CNPJ já existe");
         }
 
         [HttpPost("login")]
@@ -53,10 +57,11 @@ namespace APIVoiture.Controllers
         [HttpGet("verEmail/{email}")]
         public async Task<IActionResult> ProcurarEmail(string email)
         {
-            var u = await _userManager.FindByEmailAsync(email);
+            var u = _context.Vendedor.FirstOrDefault(x => x.UserName == email);
             if (u == null) return NotFound();
             return Ok(u.Id);
         }
+
         [HttpPost("verEmail")]
         public async Task<IActionResult> verificarEmail(DtoEmailCNPJ dto)
         {
@@ -116,6 +121,7 @@ namespace APIVoiture.Controllers
             _context.SaveChanges();
             return NoContent();
         }
+
         [HttpPatch("{id}")]
         public IActionResult updateUsuarioPatch(string id, [FromBody] JsonPatchDocument<UpdateVendedorDto> patch)
         {

@@ -60,7 +60,7 @@ public class UsuarioContext : IdentityDbContext<ApplicationUser>
                .IsUnique();
         modelBuilder.Entity<Endereco>()
                 .HasIndex(u => u.CEP)
-                .IsUnique();
+                .IsUnique(false);
 
         modelBuilder.Entity<VendedorCliente>()
        .HasKey(vc => vc.Id);
