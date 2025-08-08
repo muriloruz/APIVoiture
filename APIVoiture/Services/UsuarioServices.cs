@@ -12,9 +12,9 @@ public class UsuarioServices
     private IMapper _mapper;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly TokenService _tokenService;
+    private readonly TokenServices _tokenService;
 
-    public UsuarioServices(IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, TokenService tokenService)
+    public UsuarioServices(IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, TokenServices tokenService)
     {
         _mapper = mapper;
         _userManager = userManager;

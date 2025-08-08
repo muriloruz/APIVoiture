@@ -8,11 +8,11 @@ using System.Text;
 
 namespace APIVoiture.Services
 {
-    public class TokenService
+    public class TokenServices
     {
         private IConfiguration _configuration;
 
-        public TokenService(IConfiguration configuration)
+        public TokenServices(IConfiguration configuration)
         {
             _configuration = configuration;
         }

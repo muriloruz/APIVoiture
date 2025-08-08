@@ -17,6 +17,18 @@
         }
       }
     },
+    "/debug/routes": {
+      "get": {
+        "tags": [
+          "APIVoiture"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Endereco": {
       "post": {
         "tags": [
@@ -257,194 +269,35 @@
         }
       }
     },
-    "/Pagamento": {
-      "get": {
-        "tags": [
-          "Pagamento"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReadPagamentoDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReadPagamentoDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReadPagamentoDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+    "/Payments/create-payment-intent": {
       "post": {
         "tags": [
-          "Pagamento"
+          "Payments"
         ],
         "requestBody": {
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatePagamentoDto"
+                "$ref": "#/components/schemas/PaymentIntentCreateRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatePagamentoDto"
+                "$ref": "#/components/schemas/PaymentIntentCreateRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatePagamentoDto"
+                "$ref": "#/components/schemas/PaymentIntentCreateRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatePagamentoDto"
+                "$ref": "#/components/schemas/PaymentIntentCreateRequest"
               }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReadPagamentoDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReadPagamentoDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReadPagamentoDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Pagamento/{id}": {
-      "get": {
-        "tags": [
-          "Pagamento"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReadPagamentoDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReadPagamentoDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReadPagamentoDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Pagamento"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePagamentoDto"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePagamentoDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePagamentoDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePagamentoDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Pagamento"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -1871,52 +1724,6 @@
         },
         "additionalProperties": false
       },
-      "CreatePagamentoDto": {
-        "required": [
-          "clienteId",
-          "dataHora",
-          "metodoPagamento",
-          "pecaId",
-          "precoPeca",
-          "status",
-          "tipoPagamento"
-        ],
-        "type": "object",
-        "properties": {
-          "tipoPagamento": {
-            "maxLength": 25,
-            "minLength": 0,
-            "type": "string"
-          },
-          "dataHora": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "status": {
-            "maxLength": 55,
-            "minLength": 0,
-            "type": "string"
-          },
-          "metodoPagamento": {
-            "maxLength": 20,
-            "minLength": 0,
-            "type": "string"
-          },
-          "precoPeca": {
-            "type": "number",
-            "format": "double"
-          },
-          "pecaId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "clienteId": {
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
       "CreateUsuarioDto": {
         "required": [
           "confSenha",
@@ -2105,6 +1912,20 @@
         "type": "integer",
         "format": "int32"
       },
+      "PaymentIntentCreateRequest": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ReadEnderecoDto": {
         "type": "object",
         "properties": {
@@ -2133,44 +1954,6 @@
             "nullable": true
           },
           "uf": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ReadPagamentoDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "tipoPagamento": {
-            "type": "string",
-            "nullable": true
-          },
-          "dataHora": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "metodoPagamento": {
-            "type": "string",
-            "nullable": true
-          },
-          "precoPeca": {
-            "type": "number",
-            "format": "double"
-          },
-          "pecaId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "clienteId": {
             "type": "string",
             "nullable": true
           }
@@ -2377,44 +2160,6 @@
             "maxLength": 2,
             "minLength": 0,
             "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdatePagamentoDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "tipoPagamento": {
-            "type": "string",
-            "nullable": true
-          },
-          "dataHora": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "metodoPagamento": {
-            "type": "string",
-            "nullable": true
-          },
-          "precoPeca": {
-            "type": "number",
-            "format": "double"
-          },
-          "pecaId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "usuarioId": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

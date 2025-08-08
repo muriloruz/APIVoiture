@@ -5,16 +5,22 @@ using APIVoiture.Models;
 using APIVoiture.Profiles;
 using APIVoiture.Services;
 using AutoMapper;
+using DotNetEnv;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
+using Stripe ;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+Env.Load();
 
 
 var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
@@ -57,7 +63,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UsuarioServices>();
-builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<TokenServices>();
 builder.Services.AddScoped<VendedorServices>();
 
 builder.Services.AddAuthorization(opt =>
@@ -126,14 +132,26 @@ app.UseStaticFiles(new StaticFileOptions
 
 
 
-
-
-
-
+app.UseRouting();
 app.UseAuthorization();
-
 app.MapControllers();
 
 
+StripeConfiguration.ApiKey =
+    Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY") ??
+    throw new Exception("Chave Stripe não configurada");
+
+
+app.MapGet("/debug/routes", (IEnumerable<EndpointDataSource> endpointSources) =>
+{
+    var endpoints = endpointSources
+        .SelectMany(es => es.Endpoints)
+        .OfType<RouteEndpoint>();
+
+    return Results.Json(endpoints.Select(e => new {
+        Method = e.Metadata.GetMetadata<HttpMethodMetadata>()?.HttpMethods?[0],
+        Pattern = e.RoutePattern.RawText
+    }));
+});
 
 app.Run();
